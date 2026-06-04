@@ -18,8 +18,9 @@ st.markdown("""
     }
     .brand-caemt { color: #4a148c; }
     .brand-unifei { color: #0056b3; }
-    h1 { text-align: center; font-weight: 800; margin-top: 10px; }
-    .subtitle { text-align: center; color: #6b7280; margin-bottom: 30px; }
+    h1 { text-align: center; font-weight: 800; margin-top: 10px; color: #1a1a1a; }
+    h2 { color: #1a1a1a; }
+    .subtitle { text-align: center; color: #555555; margin-bottom: 30px; }
     .badge-codigo {
         background: #e5e7eb;
         padding: 3px 8px;
@@ -35,6 +36,7 @@ st.markdown("""
         background: #f0fdf4;
         border-left: 4px solid #1e7e34;
         border-radius: 6px;
+        color: #1a1a1a;
     }
     .bloqueada-oferta {
         background: #fef2f2;
@@ -51,7 +53,7 @@ st.markdown("""
     .divisoria {
         margin: 25px 0 15px 0;
         font-weight: 700;
-        color: #6b7280;
+        color: #333333;
         font-size: 0.8rem;
         border-bottom: 1px solid #d1d5db;
         padding-bottom: 6px;
@@ -233,9 +235,6 @@ st.markdown("""
         <div class="brand-unifei">UNIFEI</div>
     </div>
 """, unsafe_allow_html=True)
-
-# Logo Centralizado
-st.image("https://upload.wikimedia.org/wikipedia/commons/7/7f/UNIFEI.png", width=180, use_container_width=False)
 
 st.markdown("<h1>Fluxograma Inteligente</h1>", unsafe_allow_html=True)
 st.markdown("<p class=\"subtitle\">Selecione a grade correspondente, o período letivo e as disciplinas concluídas.</p>", unsafe_allow_html=True)
