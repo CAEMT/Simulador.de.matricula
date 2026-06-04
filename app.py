@@ -297,15 +297,6 @@ with col_esquerda:
             
             # Se o checkbox "marcar todas" está ativado, marcar todos os checkboxes
             st.markdown("---")
-            for codigo, dados in materias.items():
-                if marcar_todas:
-                    if st.checkbox(dados['nome'], value=True, key=f"chk-{codigo}", help=f"Código: {codigo}"):
-                        if codigo not in aprovadas:
-                            aprovadas.append(codigo)
-                else:
-                    if st.checkbox(dados['nome'], key=f"chk-{codigo}", help=f"Código: {codigo}"):
-                        if codigo not in aprovadas:
-                            aprovadas.append(codigo)
 
 with col_direita:
     st.markdown("### 2. Situação para o próximo semestre")
