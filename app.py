@@ -287,13 +287,7 @@ with col_esquerda:
     # Renderiza os blocos de períodos com checkboxes
     for semestre, materias in grade_selecionada.items():
         with st.expander(semestre, expanded=True):
-            # Caixa para marcar todas as matérias do semestre
-            col_marcar, col_espacer = st.columns([2, 3])
-            with col_marcar:
-                marcar_todas = st.checkbox(
-                    "✓ Marcar todas",
-                    key=f"marcar_todas_{semestre}",
-                    help="Marca todas as disciplinas deste semestre"
+           
                 )
             
             # Se o checkbox "marcar todas" está ativado, marcar todos os checkboxes
