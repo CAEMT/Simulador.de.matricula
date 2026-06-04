@@ -80,11 +80,6 @@ st.markdown("""
         margin-bottom: 10px;
         padding: 10px 0;
     }
-    .marcar-todos {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #0056b3;
-    }
     </style>
 """, unsafe_allow_html=True)
 
