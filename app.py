@@ -287,8 +287,13 @@ with col_esquerda:
     # Renderiza os blocos de períodos com checkboxes
     for semestre, materias in grade_selecionada.items():
         with st.expander(semestre, expanded=True):
+            
+            # Loop que cria o checkbox para cada matéria individualmente
+            for codigo, info in materias.items():
+                if st.checkbox(f"{codigo} - {info['nome']}", key=f"chk_{codigo}_{semestre}"):
+                    aprovadas.append(codigo)
            
-                )
+                
             
             # Se o checkbox "marcar todas" está ativado, marcar todos os checkboxes
             st.markdown("---")
