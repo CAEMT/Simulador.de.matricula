@@ -73,6 +73,18 @@ st.markdown("""
         border-bottom: 1px solid #d1d5db;
         padding-bottom: 6px;
     }
+    .header-periodo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px 0;
+    }
+    .marcar-todos {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #0056b3;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -280,10 +292,26 @@ with col_esquerda:
     # Renderiza os blocos de períodos com checkboxes
     for semestre, materias in grade_selecionada.items():
         with st.expander(semestre, expanded=True):
+            # Caixa para marcar todas as matérias do semestre
+            col_marcar, col_espacer = st.columns([2, 3])
+            with col_marcar:
+                marcar_todas = st.checkbox(
+                    "✓ Marcar todas",
+                    key=f"marcar_todas_{semestre}",
+                    help="Marca todas as disciplinas deste semestre"
+                )
+            
+            # Se o checkbox "marcar todas" está ativado, marcar todos os checkboxes
+            st.markdown("---")
             for codigo, dados in materias.items():
-                label_html = f"<span class='badge-codigo'>{codigo}</span> {dados['nome']}"
-                if st.checkbox(dados['nome'], key=f"chk-{codigo}", help=f"Código: {codigo}"):
-                    aprovadas.append(codigo)
+                if marcar_todas:
+                    if st.checkbox(dados['nome'], value=True, key=f"chk-{codigo}", help=f"Código: {codigo}"):
+                        if codigo not in aprovadas:
+                            aprovadas.append(codigo)
+                else:
+                    if st.checkbox(dados['nome'], key=f"chk-{codigo}", help=f"Código: {codigo}"):
+                        if codigo not in aprovadas:
+                            aprovadas.append(codigo)
 
 with col_direita:
     st.markdown("### 2. Situação para o próximo semestre")
