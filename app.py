@@ -164,56 +164,81 @@ matrizes = {
     },
     "2016": {
         "1º Período": {
-            'EMT101': {'nome': 'Introdução à Engenharia de Materiais', 'req': [], 'oferta': 'impar'},
-            'CCO001': {'nome': 'Algoritmos e Programação de Computadores', 'req': [], 'oferta': 'regular'},
-            'HD0101': {'nome': 'Ciências Sociais e Humanas', 'req': [], 'oferta': 'regular'},
+            'EMT101': {'nome': 'Introdução à EMT', 'req': [], 'oferta': 'impar'},
+            'CCO016': {'nome': 'Fundamentos de Programação', 'req': [], 'oferta': 'regular'},
+            'SOC002': {'nome': 'Ciências Sociais HS', 'req': [], 'oferta': 'regular'},
             'MAT001': {'nome': 'Cálculo I', 'req': [], 'oferta': 'regular'},
-            'QUI001': {'nome': 'Química Geral', 'req': [], 'oferta': 'regular'},
-            'DES001': {'nome': 'Desenho Técnico Instrumentado', 'req': [], 'oferta': 'impar'}
+            'MAT011': {'nome': 'Geometria Analítica e Álgebra Linear', 'req': [], 'oferta': 'regular'},
+            'FIS104': {'nome': 'Mecânica Geral', 'req': [], 'oferta': 'impar'},
+            'FIS114': {'nome': 'Laboratório de Mecânica Geral', 'req': [], 'oferta': 'impar'}
         },
         "2º Período": {
-            'EMT001': {'nome': 'Ciência dos Materiais I', 'req': ['EMT101', 'QUI001'], 'oferta': 'par'},
-            'FIS001': {'nome': 'Física I', 'req': ['MAT001'], 'oferta': 'regular'},
+            'EMT037T': {'nome': 'Ciência dos Materiais I - Teórica', 'req': ['EMT101'], 'oferta': 'par'},
+            'EMT037P': {'nome': 'Ciência dos Materiais I - Experimental', 'req': ['EMT101'], 'oferta': 'par'},
+            'FIS203': {'nome': 'Física Geral I', 'req': ['MAT001'], 'oferta': 'regular'},
+            'FIS213': {'nome': 'Física Experimental I', 'req': ['MAT001'], 'oferta': 'regular'},
             'MAT002': {'nome': 'Cálculo II', 'req': ['MAT001'], 'oferta': 'regular'},
-            'MAT004': {'nome': 'Geometria Analítica e Álgebra Linear', 'req': [], 'oferta': 'regular'},
-            'QUI002': {'nome': 'Química Experimental', 'req': ['QUI001'], 'oferta': 'regular'}
+            'EMT102': {'nome': 'Química Geral', 'req': [], 'oferta': 'par'},
+            'BAC002': {'nome': 'Língua Comum', 'req': [], 'oferta': 'regular'}
         },
         "3º Período": {
-            'EMT002': {'nome': 'Ciência dos Materiais II', 'req': ['EMT001'], 'oferta': 'impar'},
-            'FIS002': {'nome': 'Física II', 'req': ['FIS001', 'MAT002'], 'oferta': 'regular'},
-            'EME001': {'nome': 'Mecânica Geral', 'req': ['FIS001', 'MAT002'], 'oferta': 'regular'},
+            'EMT038': {'nome': 'Ciência dos Materiais II', 'req': ['EMT037T'], 'oferta': 'impar'},
+            'FIS303': {'nome': 'Estática', 'req': ['FIS104'], 'oferta': 'regular'},
+            'EME303': {'nome': 'Resistência dos Materiais - Teórica', 'req': ['FIS104'], 'oferta': 'regular'},
+            'FIS403': {'nome': 'Física Geral III', 'req': ['FIS203', 'MAT002'], 'oferta': 'regular'},
             'MAT003': {'nome': 'Cálculo III', 'req': ['MAT002'], 'oferta': 'regular'},
-            'QUI003': {'nome': 'Físico-Química', 'req': ['QUI001', 'MAT001'], 'oferta': 'impar'}
+            'EMT103': {'nome': 'Físico-Química', 'req': ['EMT102', 'MAT001'], 'oferta': 'impar'},
+            'QUI022': {'nome': 'Química Orgânica', 'req': ['EMT102'], 'oferta': 'impar'}
         },
         "4º Período": {
-            'EMT003': {'nome': 'Termodinâmica dos Materiais', 'req': ['QUI003'], 'oferta': 'par'},
-            'FIS003': {'nome': 'Física III', 'req': ['FIS002', 'MAT003'], 'oferta': 'regular'},
-            'EME002': {'nome': 'Resistência dos Materiais', 'req': ['EME001'], 'oferta': 'regular'},
-            'MAT005': {'nome': 'Cálculo Numérico', 'req': ['MAT002', 'CCO001'], 'oferta': 'regular'},
-            'MAT006': {'nome': 'Estatística e Probabilidade', 'req': ['MAT002'], 'oferta': 'regular'}
+            'EMT039': {'nome': 'Termodinâmica', 'req': ['EMT038', 'EMT103'], 'oferta': 'par'},
+            'EME405T': {'nome': 'Resistência dos Materiais - Experimental', 'req': ['EME303'], 'oferta': 'par'},
+            'EME405P': {'nome': 'Mecânica dos Sólidos - Teórica', 'req': ['EME303'], 'oferta': 'par'},
+            'MAT013': {'nome': 'Probabilidade e Estatística', 'req': ['MAT002'], 'oferta': 'regular'},
+            'MAT021': {'nome': 'Equações Diferenciais', 'req': ['MAT003'], 'oferta': 'par'},
+            'QUI105': {'nome': 'Química Analítica', 'req': ['EMT102'], 'oferta': 'par'},
+            'QUI115': {'nome': 'Química Analítica Experimental', 'req': ['EMT102'], 'oferta': 'par'}
         },
         "5º Período": {
-            'EMT004': {'nome': 'Materiais Cerâmicos I', 'req': ['EMT002', 'EMT003'], 'oferta': 'impar'},
-            'EMT005': {'nome': 'Metalurgia Física I', 'req': ['EMT002', 'EMT003'], 'oferta': 'impar'},
-            'IEM001': {'nome': 'Fenômenos de Transporte', 'req': ['MAT003'], 'oferta': 'impar'},
-            'EMT006': {'nome': 'Introdução aos Polímeros', 'req': ['EMT002'], 'oferta': 'impar'}
+            'EMT002T': {'nome': 'Materiais Cerâmicos - Teórica', 'req': ['EMT039'], 'oferta': 'impar'},
+            'EMT002P': {'nome': 'Materiais Cerâmicos - Experimental', 'req': ['EMT039'], 'oferta': 'impar'},
+            'EME313T': {'nome': 'Fenômenos de Transporte - Teórica', 'req': ['MAT003', 'MAT021'], 'oferta': 'impar'},
+            'EME313P': {'nome': 'Fenômenos de Transporte - Experimental', 'req': ['MAT003'], 'oferta': 'impar'},
+            'EME505T': {'nome': 'Resistência dos Materiais II - Teórica', 'req': ['EME405T'], 'oferta': 'impar'},
+            'EME505P': {'nome': 'Resistência dos Materiais II - Experimental', 'req': ['EME405T'], 'oferta': 'impar'},
+            'EMT072': {'nome': 'Produção de Ligas', 'req': ['EMT038'], 'oferta': 'impar'}
         },
         "6º Período": {
-            'EMT007': {'nome': 'Processamento de Cerâmicas I', 'req': ['EMT004'], 'oferta': 'par'},
-            'EMT008': {'nome': 'Transformação de Fases', 'req': ['EMT003'], 'oferta': 'par'},
-            'EMT009': {'nome': 'Comportamento Mecânico de Materiais', 'req': ['EME002', 'EMT002'], 'oferta': 'par'},
-            'EMT010': {'nome': 'Estrutura e Propriedades de Polímeros', 'req': ['EMT006'], 'oferta': 'par'}
+            'EMT049T': {'nome': 'Conformação de Metais - Teórica', 'req': ['EMT002T'], 'oferta': 'par'},
+            'EMT049P': {'nome': 'Conformação de Metais - Experimental', 'req': ['EMT002P'], 'oferta': 'par'},
+            'EMT412T': {'nome': 'Estrutura e Propriedades Polímeros - Teórica', 'req': ['QUI022'], 'oferta': 'par'},
+            'EMT412P': {'nome': 'Estrutura e Propriedades Polímeros - Experimental', 'req': ['QUI022'], 'oferta': 'par'},
+            'EME047T': {'nome': 'Estrutura e Propriedades Polímeros - Teórica', 'req': ['EMT039'], 'oferta': 'par'},
+            'EMT147P': {'nome': 'Estrutura e Propriedades Polímeros - Experimental', 'req': ['EMT039'], 'oferta': 'par'},
+            'EMT071': {'nome': 'Processos de Fabricação I - Experimental', 'req': ['EMT072'], 'oferta': 'par'},
+            'EME039T': {'nome': 'Fenômenos de Transporte II - Teórica', 'req': ['EME313T'], 'oferta': 'par'},
+            'EME039P': {'nome': 'Fenômenos de Transporte II - Experimental', 'req': ['EME313T'], 'oferta': 'par'}
         },
         "7º Período": {
-            'EMT011': {'nome': 'Técnicas de Caracterização de Materiais', 'req': ['EMT005'], 'oferta': 'impar'},
-            'EMT012': {'nome': 'Corrosão e Proteção de Materiais', 'req': ['EMT003'], 'oferta': 'impar'},
-            'EEB001': {'nome': 'Eletrotécnica Geral', 'req': ['FIS003'], 'oferta': 'regular'},
-            'EMT013': {'nome': 'Materiais Compósitos', 'req': ['EMT002'], 'oferta': 'impar'}
+            'EMT024T': {'nome': 'Processamento de Materiais Cerâmicos - Teórica', 'req': ['EMT049T'], 'oferta': 'impar'},
+            'EMT024P': {'nome': 'Processamento de Materiais Cerâmicos - Experimental', 'req': ['EMT049P'], 'oferta': 'impar'},
+            'EMT025T': {'nome': 'Técnicas de Caracterização de Materiais', 'req': ['EMT072'], 'oferta': 'impar'},
+            'EMT125P': {'nome': 'Técnicas de Caracterização - Experimental', 'req': ['EMT072'], 'oferta': 'impar'},
+            'EMT030': {'nome': 'Fundamentos de Oxidação e Corrosão', 'req': ['EMT039'], 'oferta': 'impar'},
+            'EMT066T': {'nome': 'Tratamento Térmico - Teórica', 'req': ['EMT039'], 'oferta': 'impar'},
+            'EMT066P': {'nome': 'Tratamento Térmico - Experimental', 'req': ['EMT039'], 'oferta': 'impar'},
+            'EAM002': {'nome': 'Ciência de Materiais', 'req': ['EMT038'], 'oferta': 'regular'},
+            'EMT067': {'nome': 'Seleção de Materiais', 'req': ['EMT038'], 'oferta': 'impar'}
         },
         "8º Período": {
-            'EMT014': {'nome': 'Seleção de Materiais', 'req': ['EMT009'], 'oferta': 'par'},
-            'EP0001': {'nome': 'Higiene e Segurança do Trabalho', 'req': [], 'oferta': 'regular'},
-            'EMT015': {'nome': 'Processamento de Polímeros', 'req': ['EMT010'], 'oferta': 'par'}
+            'EMT027T': {'nome': 'Vidros e Vitrocerâmicos', 'req': ['EMT002T'], 'oferta': 'par'},
+            'EMT046': {'nome': 'Processamento de Materiais Cerâmicos II', 'req': ['EMT024T'], 'oferta': 'par'},
+            'EMT065T': {'nome': 'Processos de Fabricação II', 'req': ['EMT071'], 'oferta': 'par'},
+            'EMT022T': {'nome': 'Tratamento Superficial de Metais', 'req': ['EMT030'], 'oferta': 'par'},
+            'EMT042T': {'nome': 'Processamento de Polímeros - Teórica', 'req': ['EMT047T', 'EMT412T'], 'oferta': 'par'},
+            'EMT142P': {'nome': 'Processamento de Polímeros - Experimental', 'req': ['EMT047T'], 'oferta': 'par'},
+            'EPR220': {'nome': 'Higiene e Segurança do Trabalho', 'req': [], 'oferta': 'regular'},
+            'EPR002': {'nome': 'Organização Industrial e Administração', 'req': [], 'oferta': 'regular'}
         },
         "9º Período": {
             'IEPG01': {'nome': 'Administração e Economia', 'req': [], 'oferta': 'impar'},
