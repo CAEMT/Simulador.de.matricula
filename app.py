@@ -9,6 +9,50 @@ st.set_page_config(
 # Estilização customizada para manter a identidade visual original
 st.markdown("""
     <style>
+    :root {
+        --caemt-color: #4a148c;
+        --unifei-color: #0056b3;
+        --muted-color: #4b5563;
+        --border-color: #d1d5db;
+        --badge-background: #e5e7eb;
+        --badge-color: #1f2937;
+        --suggestion-background: #f0fdf4;
+        --suggestion-border: #1e7e34;
+        --blocked-background: #fef2f2;
+        --blocked-border: #b21f2d;
+        --blocked-color: #7f1d1d;
+    }
+
+    [data-theme="dark"] {
+        --caemt-color: #d8b4fe;
+        --unifei-color: #7dd3fc;
+        --muted-color: #d1d5db;
+        --border-color: #4b5563;
+        --badge-background: #374151;
+        --badge-color: #f9fafb;
+        --suggestion-background: #123524;
+        --suggestion-border: #4ade80;
+        --blocked-background: #451a1a;
+        --blocked-border: #f87171;
+        --blocked-color: #fecaca;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --caemt-color: #d8b4fe;
+            --unifei-color: #7dd3fc;
+            --muted-color: #d1d5db;
+            --border-color: #4b5563;
+            --badge-background: #374151;
+            --badge-color: #f9fafb;
+            --suggestion-background: #123524;
+            --suggestion-border: #4ade80;
+            --blocked-background: #451a1a;
+            --blocked-border: #f87171;
+            --blocked-color: #fecaca;
+        }
+    }
+
     .brand-container {
         display: flex;
         justify-content: space-between;
@@ -16,44 +60,44 @@ st.markdown("""
         font-size: 1.1rem;
         margin-bottom: -20px;
     }
-    .brand-caemt { color: #4a148c; }
-    .brand-unifei { color: #0056b3; }
+    .brand-caemt { color: var(--caemt-color); }
+    .brand-unifei { color: var(--unifei-color); }
     h1 { text-align: center; font-weight: 800; margin-top: 10px; }
-    .subtitle { text-align: center; color: #6b7280; margin-bottom: 30px; }
+    .subtitle { text-align: center; color: var(--muted-color); margin-bottom: 30px; }
     .badge-codigo {
-        background: #e5e7eb;
+        background: var(--badge-background);
         padding: 3px 8px;
         border-radius: 4px;
         font-weight: 700;
-        color: #374151;
+        color: var(--badge-color);
         font-family: monospace;
         margin-right: 5px;
     }
     .sugestao-item {
         padding: 12px 16px;
         margin-bottom: 10px;
-        background: #f0fdf4;
-        border-left: 4px solid #1e7e34;
+        background: var(--suggestion-background);
+        border-left: 4px solid var(--suggestion-border);
         border-radius: 6px;
     }
     .bloqueada-oferta {
-        background: #fef2f2;
-        border-left: 4px solid #b21f2d;
-        color: #7f1d1d;
+        background: var(--blocked-background);
+        border-left: 4px solid var(--blocked-border);
+        color: var(--blocked-color);
     }
     .aviso-oferta {
         display: block;
         font-size: 0.8rem;
         font-weight: 600;
-        color: #b21f2d;
+        color: var(--blocked-border);
         margin-top: 4px;
     }
     .divisoria {
         margin: 25px 0 15px 0;
         font-weight: 700;
-        color: #6b7280;
+        color: var(--muted-color);
         font-size: 0.8rem;
-        border-bottom: 1px solid #d1d5db;
+        border-bottom: 1px solid var(--border-color);
         padding-bottom: 6px;
     }
     </style>
