@@ -251,6 +251,10 @@ matrizes = {
     }
 }
 
+# Inicializar estado de sessão para persisitir checkboxes
+if 'aprovadas' not in st.session_state:
+    st.session_state.aprovadas = {}
+
 # Cabeçalho Superior
 st.markdown("""
     <div class="brand-container">
@@ -279,7 +283,6 @@ st.markdown("---")
 # Layout de duas colunas principais
 col_esquerda, col_direita = st.columns([1.15, 0.85])
 
-aprovadas = []
 grade_selecionada = matrizes[grade_versao]
 
 with col_esquerda:
@@ -289,9 +292,18 @@ with col_esquerda:
     for semestre, materias in grade_selecionada.items():
         with st.expander(semestre, expanded=True):
             for codigo, dados in materias.items():
-                label_html = f"<span class='badge-codigo'>{codigo}</span> {dados['nome']}"
-                if st.checkbox(dados['nome'], key=f"chk-{codigo}", help=f"Código: {codigo}"):
-                    aprovadas.append(codigo)
+                # Usar session_state para persistir os checkboxes
+                if st.checkbox(
+                    f"**{codigo}** — {dados['nome']}", 
+                    key=f"chk-{codigo}",
+                    value=st.session_state.aprovadas.get(codigo, False)
+                ):
+                    st.session_state.aprovadas[codigo] = True
+                else:
+                    st.session_state.aprovadas[codigo] = False
+
+# Obter lista de aprovadas
+aprovadas = [cod for cod, marcado in st.session_state.aprovadas.items() if marcado]
 
 with col_direita:
     st.markdown("### 2. Situação para o próximo semestre")
