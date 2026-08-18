@@ -18,9 +18,12 @@ st.markdown("""
         --badge-color: #1f2937;
         --suggestion-background: #f0fdf4;
         --suggestion-border: #1e7e34;
+        --suggestion-text: #064e3b;              /* texto sobre fundo de sugestão (modo claro) */
         --blocked-background: #fef2f2;
         --blocked-border: #b21f2d;
         --blocked-color: #7f1d1d;
+        --blocked-text: #7f1d1d;                  /* texto sobre fundo bloqueado (modo claro) */
+        --global-text: #0f172a;                   /* texto padrão (modo claro) */
     }
 
     [data-theme="dark"] {
@@ -32,9 +35,12 @@ st.markdown("""
         --badge-color: #f9fafb;
         --suggestion-background: #123524;
         --suggestion-border: #4ade80;
+        --suggestion-text: #d1fae5;               /* texto sobre fundo de sugestão (modo escuro) */
         --blocked-background: #451a1a;
         --blocked-border: #f87171;
         --blocked-color: #fecaca;
+        --blocked-text: #fecaca;                  /* texto sobre fundo bloqueado (modo escuro) */
+        --global-text: #f9fafb;                   /* texto padrão (modo escuro) */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -47,12 +53,16 @@ st.markdown("""
             --badge-color: #f9fafb;
             --suggestion-background: #123524;
             --suggestion-border: #4ade80;
+            --suggestion-text: #d1fae5;
             --blocked-background: #451a1a;
             --blocked-border: #f87171;
             --blocked-color: #fecaca;
+            --blocked-text: #fecaca;
+            --global-text: #f9fafb;
         }
     }
 
+    /* Elementos de marca e tipografia */
     .brand-container {
         display: flex;
         justify-content: space-between;
@@ -62,7 +72,7 @@ st.markdown("""
     }
     .brand-caemt { color: var(--caemt-color); }
     .brand-unifei { color: var(--unifei-color); }
-    h1 { text-align: center; font-weight: 800; margin-top: 10px; }
+    h1 { text-align: center; font-weight: 800; margin-top: 10px; color: var(--global-text); }
     .subtitle { text-align: center; color: var(--muted-color); margin-bottom: 30px; }
     .badge-codigo {
         background: var(--badge-background);
@@ -73,25 +83,31 @@ st.markdown("""
         font-family: monospace;
         margin-right: 5px;
     }
+
+    /* Cartões de sugestão / bloqueada */
     .sugestao-item {
         padding: 12px 16px;
         margin-bottom: 10px;
-        background: var(--suggestion-background);
-        border-left: 4px solid var(--suggestion-border);
+        background: var(--suggestion-background) !important;
+        border-left: 4px solid var(--suggestion-border) !important;
         border-radius: 6px;
+        color: var(--suggestion-text) !important;         /* garante contraste no modo claro/escuro */
     }
+    .sugestao-item strong { color: var(--suggestion-text) !important; }
+
     .bloqueada-oferta {
-        background: var(--blocked-background);
-        border-left: 4px solid var(--blocked-border);
-        color: var(--blocked-color);
+        background: var(--blocked-background) !important;
+        border-left: 4px solid var(--blocked-border) !important;
+        color: var(--blocked-text) !important;
     }
     .aviso-oferta {
         display: block;
         font-size: 0.8rem;
         font-weight: 600;
-        color: var(--blocked-border);
+        color: var(--blocked-border) !important;
         margin-top: 4px;
     }
+
     .divisoria {
         margin: 25px 0 15px 0;
         font-weight: 700;
@@ -99,6 +115,16 @@ st.markdown("""
         font-size: 0.8rem;
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 6px;
+    }
+
+    /* Forçar cor padrão do texto dentro dos componentes do Streamlit para evitar herança indesejada */
+    .stMarkdown, .stText, .stExpander, .stContainer {
+        color: var(--global-text) !important;
+    }
+
+    /* Pequenas melhorias de acessibilidade */
+    .sugestao-item, .bloqueada-oferta {
+        box-shadow: 0 1px 0 rgba(0,0,0,0.03);
     }
     </style>
 """, unsafe_allow_html=True)
