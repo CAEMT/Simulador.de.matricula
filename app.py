@@ -40,7 +40,7 @@ st.markdown("""
         --blocked-border: #f87171;
         --blocked-color: #fecaca;
         --blocked-text: #fecaca;                  /* texto sobre fundo bloqueado (modo escuro) */
-        --global-text: #f9fafb;                   /* texto padrão (modo escuro) */
+        --global-text: #0f172a;                   /* keep dark-mode text as readable default (we'll override for dark via data-theme) */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -72,7 +72,7 @@ st.markdown("""
     }
     .brand-caemt { color: var(--caemt-color); }
     .brand-unifei { color: var(--unifei-color); }
-    h1 { text-align: center; font-weight: 800; margin-top: 10px; color: var(--global-text); }
+    h1 { text-align: center; font-weight: 800; margin-top: 10px; color: var(--global-text) !important; }
     .subtitle { text-align: center; color: var(--muted-color); margin-bottom: 30px; }
     .badge-codigo {
         background: var(--badge-background);
@@ -92,6 +92,7 @@ st.markdown("""
         border-left: 4px solid var(--suggestion-border) !important;
         border-radius: 6px;
         color: var(--suggestion-text) !important;         /* garante contraste no modo claro/escuro */
+        opacity: 1 !important;
     }
     .sugestao-item strong { color: var(--suggestion-text) !important; }
 
@@ -99,6 +100,7 @@ st.markdown("""
         background: var(--blocked-background) !important;
         border-left: 4px solid var(--blocked-border) !important;
         color: var(--blocked-text) !important;
+        opacity: 1 !important;
     }
     .aviso-oferta {
         display: block;
@@ -106,6 +108,7 @@ st.markdown("""
         font-weight: 600;
         color: var(--blocked-border) !important;
         margin-top: 4px;
+        opacity: 1 !important;
     }
 
     .divisoria {
@@ -117,9 +120,29 @@ st.markdown("""
         padding-bottom: 6px;
     }
 
-    /* Forçar cor padrão do texto dentro dos componentes do Streamlit para evitar herança indesejada */
-    .stMarkdown, .stText, .stExpander, .stContainer {
+    /* Forçar cor e opacidade do texto dentro dos componentes do Streamlit para evitar herança indesejada */
+    .stApp, .main, .block-container, .stMarkdown, .stText, .stExpander, .stContainer {
         color: var(--global-text) !important;
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    /* Títulos e parágrafos renderizados pelo st.markdown */
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown p, .stMarkdown span {
+        color: var(--global-text) !important;
+        opacity: 1 !important;
+    }
+
+    /* Labels de checkbox e texto dentro dos expanders */
+    .stCheckbox label, .stCheckbox div, .stCheckbox p, .stCheckbox span,
+    .stExpander .streamlit-expanderHeader, .streamlit-expanderHeader {
+        color: var(--global-text) !important;
+        opacity: 1 !important;
+    }
+
+    /* Aumentar contraste de links e pequenos elementos quando necessário */
+    a, .stMarkdown a {
+        color: var(--unifei-color) !important;
     }
 
     /* Pequenas melhorias de acessibilidade */
@@ -211,15 +234,13 @@ matrizes = {
         },
         "8º Período": {
             'EMT027T': {'nome': 'Vidros e Vitrocerâmicos', 'req': ['EMT502T'], 'oferta': 'par'},
-            'EMT046': {'nome': 'Processos Aplicados a Materiais Cerâmicos', 'req': ['EMT024T'], 'oferta': 'par'},
-            'EMT067': {'nome': 'Seleção de Materiais', 'req': ['EMT601T'], 'oferta': 'par'},
+            'EMT046': {'nome': 'Processamento de Materiais Cerâmicos II', 'req': ['EMT024T'], 'oferta': 'par'},
             'EMT065T': {'nome': 'Processos de Fabricação II', 'req': ['EMT071'], 'oferta': 'par'},
             'EMT022T': {'nome': 'Tratamento Superficial de Metais', 'req': ['EMT030'], 'oferta': 'par'},
-            'EP7006': {'nome': 'Higiene e Segurança do Trabalho', 'req': [], 'oferta': 'regular'},
-            'EMT045P': {'nome': 'Síntese de Polímeros - Experimental', 'req': ['EMT045T'], 'oferta': 'par'},
-            'EMT042T': {'nome': 'Processamento de Polímeros - Teórica', 'req': ['EMT047T', 'EMT063'], 'oferta': 'par'},
+            'EMT042T': {'nome': 'Processamento de Polímeros - Teórica', 'req': ['EMT047T', 'EMT412T'], 'oferta': 'par'},
             'EMT142P': {'nome': 'Processamento de Polímeros - Experimental', 'req': ['EMT047T'], 'oferta': 'par'},
-            'EMT801P': {'nome': 'Processamento de Compósitos - Experimental', 'req': ['EMT701'], 'oferta': 'par'}
+            'EPR220': {'nome': 'Higiene e Segurança do Trabalho', 'req': [], 'oferta': 'regular'},
+            'EPR002': {'nome': 'Organização Industrial e Administração', 'req': [], 'oferta': 'regular'}
         },
         "9º Período": {
             'IEPG22': {'nome': 'Administração Aplicada', 'req': [], 'oferta': 'impar'},
