@@ -40,7 +40,7 @@ st.markdown("""
         --blocked-border: #f87171;
         --blocked-color: #fecaca;
         --blocked-text: #fecaca;                  /* texto sobre fundo bloqueado (modo escuro) */
-        --global-text: #0f172a;                   /* keep dark-mode text as readable default (we'll override for dark via data-theme) */
+        --global-text: #f9fafb;                   /* texto padrão (modo escuro) */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -94,7 +94,9 @@ st.markdown("""
         color: var(--suggestion-text) !important;         /* garante contraste no modo claro/escuro */
         opacity: 1 !important;
     }
-    .sugestao-item strong { color: var(--suggestion-text) !important; }
+    .sugestao-item strong { 
+        color: var(--suggestion-text) !important;
+    }
 
     .bloqueada-oferta {
         background: var(--blocked-background) !important;
@@ -102,6 +104,11 @@ st.markdown("""
         color: var(--blocked-text) !important;
         opacity: 1 !important;
     }
+    
+    .bloqueada-oferta strong {
+        color: var(--blocked-text) !important;
+    }
+    
     .aviso-oferta {
         display: block;
         font-size: 0.8rem;
