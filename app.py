@@ -65,7 +65,7 @@ matrizes = {
         "1º Período": {
             'EMT101': {'nome': 'Introdução à Engenharia de Materiais', 'req': [], 'oferta': 'impar'},
             'CCO016': {'nome': 'Fundamentos de Programação', 'req': [], 'oferta': 'regular'},
-            'IEPG21': {'nome': 'Ciências Sociais e Humanas', 'req': [], 'oferta': 'regular'},
+            'IEPG21': {'nome': 'Ciências Humanas e Sociais', 'req': [], 'oferta': 'regular'},
             'MAT00A': {'nome': 'Cálculo A', 'req': [], 'oferta': 'regular'},
             'LET013': {'nome': 'Escrita Acadêmica Científica', 'req': [], 'oferta': 'regular'},
             'EMT102': {'nome': 'Química Geral', 'req': [], 'oferta': 'regular'},
@@ -166,7 +166,7 @@ matrizes = {
         "1º Período": {
             'EMT101': {'nome': 'Introdução à EMT', 'req': [], 'oferta': 'impar'},
             'CCO016': {'nome': 'Fundamentos de Programação', 'req': [], 'oferta': 'regular'},
-            'SOC002': {'nome': 'Ciências Sociais HS', 'req': [], 'oferta': 'regular'},
+            'SOC002': {'nome': 'Ciências Humanas e Sociais', 'req': [], 'oferta': 'regular'},
             'MAT001': {'nome': 'Cálculo I', 'req': [], 'oferta': 'regular'},
             'MAT011': {'nome': 'Geometria Analítica e Álgebra Linear', 'req': [], 'oferta': 'regular'},
             'FIS104': {'nome': 'Mecânica Geral', 'req': [], 'oferta': 'impar'},
