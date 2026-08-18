@@ -259,9 +259,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# Logo Centralizado
-st.image("https://upload.wikimedia.org/wikipedia/commons/7/7f/UNIFEI.png", width=180, use_container_width=False)
-
 st.markdown("<h1>Fluxograma Inteligente</h1>", unsafe_allow_html=True)
 st.markdown("<p class=\"subtitle\">Selecione a grade correspondente, o período letivo e as disciplinas concluídas.</p>", unsafe_allow_html=True)
 
