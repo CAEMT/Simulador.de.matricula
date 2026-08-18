@@ -6,116 +6,96 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilização customizada para manter a identidade visual original
+# Estilização customizada adaptável (Modo Claro e Escuro)
 st.markdown("""
     <style>
+    /* 1. Cores Padrão (Modo Claro) */
     :root {
         --caemt-color: #4a148c;
         --unifei-color: #0056b3;
         --muted-color: #4b5563;
         --border-color: #d1d5db;
-        --badge-background: #e5e7eb;
-        --badge-color: #1f2937;
-        --suggestion-background: #f0fdf4;
-        --suggestion-border: #1e7e34;
-        --suggestion-text: #064e3b;              /* texto sobre fundo de sugestão (modo claro) */
-        --blocked-background: #fef2f2;
-        --blocked-border: #b21f2d;
-        --blocked-color: #7f1d1d;
-        --blocked-text: #7f1d1d;                  /* texto sobre fundo bloqueado (modo claro) */
-        --global-text: #0f172a;                   /* texto padrão (modo claro) */
+        
+        /* Sugestão (Verde) */
+        --suggestion-bg: #e6f4ea;
+        --suggestion-border: #137333;
+        --suggestion-text: #0d652d;
+        
+        /* Bloqueada (Vermelho) */
+        --blocked-bg: #fce8e6;
+        --blocked-border: #c5221f;
+        --blocked-text: #a50e0e;
     }
 
-    [data-theme="dark"] {
-        --caemt-color: #d8b4fe;
-        --unifei-color: #7dd3fc;
-        --muted-color: #d1d5db;
-        --border-color: #4b5563;
-        --badge-background: #374151;
-        --badge-color: #f9fafb;
-        --suggestion-background: #123524;
-        --suggestion-border: #4ade80;
-        --suggestion-text: #d1fae5;               /* texto sobre fundo de sugestão (modo escuro) */
-        --blocked-background: #451a1a;
-        --blocked-border: #f87171;
-        --blocked-color: #fecaca;
-        --blocked-text: #fecaca;                  /* texto sobre fundo bloqueado (modo escuro) */
-        --global-text: #f9fafb;                   /* texto padrão (modo escuro) */
-    }
-
+    /* 2. Cores para Modo Escuro */
     @media (prefers-color-scheme: dark) {
         :root {
             --caemt-color: #d8b4fe;
             --unifei-color: #7dd3fc;
-            --muted-color: #d1d5db;
-            --border-color: #4b5563;
-            --badge-background: #374151;
-            --badge-color: #f9fafb;
-            --suggestion-background: #123524;
-            --suggestion-border: #4ade80;
-            --suggestion-text: #d1fae5;
-            --blocked-background: #451a1a;
+            --muted-color: #9ca3af;
+            --border-color: #374151;
+            
+            --suggestion-bg: #0f3822;
+            --suggestion-border: #34d399;
+            --suggestion-text: #a7f3d0;
+            
+            --blocked-bg: #3c1618;
             --blocked-border: #f87171;
-            --blocked-color: #fecaca;
             --blocked-text: #fecaca;
-            --global-text: #f9fafb;
         }
     }
 
-    /* Elementos de marca e tipografia */
+    /* Elementos de marca e cabeçalho */
     .brand-container {
         display: flex;
         justify-content: space-between;
         font-weight: 800;
         font-size: 1.1rem;
-        margin-bottom: -20px;
+        margin-bottom: -10px;
     }
     .brand-caemt { color: var(--caemt-color); }
     .brand-unifei { color: var(--unifei-color); }
-    h1 { text-align: center; font-weight: 800; margin-top: 10px; color: var(--global-text) !important; }
-    .subtitle { text-align: center; color: var(--muted-color); margin-bottom: 30px; }
-    .badge-codigo {
-        background: var(--badge-background);
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-weight: 700;
-        color: var(--badge-color);
-        font-family: monospace;
-        margin-right: 5px;
+    
+    h1 { 
+        text-align: center; 
+        font-weight: 800; 
+        margin-top: 10px; 
+    }
+    .subtitle { 
+        text-align: center; 
+        color: var(--muted-color); 
+        margin-bottom: 30px; 
     }
 
-    /* Cartões de sugestão / bloqueada */
+    /* Cartões de sugestão / bloqueio */
     .sugestao-item {
         padding: 12px 16px;
         margin-bottom: 10px;
-        background: var(--suggestion-background) !important;
-        border-left: 4px solid var(--suggestion-border) !important;
+        background-color: var(--suggestion-bg);
+        border-left: 4px solid var(--suggestion-border);
         border-radius: 6px;
-        color: var(--suggestion-text) !important;         /* garante contraste no modo claro/escuro */
-        opacity: 1 !important;
+        color: var(--suggestion-text);
     }
     .sugestao-item strong { 
-        color: var(--suggestion-text) !important;
+        color: var(--suggestion-text); 
     }
 
     .bloqueada-oferta {
-        background: var(--blocked-background) !important;
-        border-left: 4px solid var(--blocked-border) !important;
-        color: var(--blocked-text) !important;
-        opacity: 1 !important;
+        background-color: var(--blocked-bg);
+        border-left: 4px solid var(--blocked-border);
+        color: var(--blocked-text);
     }
-    
-    .bloqueada-oferta strong {
-        color: var(--blocked-text) !important;
+    .bloqueada-oferta strong { 
+        color: var(--blocked-text); 
     }
-    
+
     .aviso-oferta {
         display: block;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 600;
-        color: var(--blocked-border) !important;
+        color: var(--blocked-text);
         margin-top: 4px;
-        opacity: 1 !important;
+        opacity: 0.9;
     }
 
     .divisoria {
@@ -125,36 +105,6 @@ st.markdown("""
         font-size: 0.8rem;
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 6px;
-    }
-
-    /* Forçar cor e opacidade do texto dentro dos componentes do Streamlit para evitar herança indesejada */
-    .stApp, .main, .block-container, .stMarkdown, .stText, .stExpander, .stContainer {
-        color: var(--global-text) !important;
-        opacity: 1 !important;
-        filter: none !important;
-    }
-
-    /* Títulos e parágrafos renderizados pelo st.markdown */
-    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown p, .stMarkdown span {
-        color: var(--global-text) !important;
-        opacity: 1 !important;
-    }
-
-    /* Labels de checkbox e texto dentro dos expanders */
-    .stCheckbox label, .stCheckbox div, .stCheckbox p, .stCheckbox span,
-    .stExpander .streamlit-expanderHeader, .streamlit-expanderHeader {
-        color: var(--global-text) !important;
-        opacity: 1 !important;
-    }
-
-    /* Aumentar contraste de links e pequenos elementos quando necessário */
-    a, .stMarkdown a {
-        color: var(--unifei-color) !important;
-    }
-
-    /* Pequenas melhorias de acessibilidade */
-    .sugestao-item, .bloqueada-oferta {
-        box-shadow: 0 1px 0 rgba(0,0,0,0.03);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -349,7 +299,7 @@ matrizes = {
     }
 }
 
-# Inicializar estado de sessão para persisitir checkboxes
+# Inicializar estado de sessão para persistir checkboxes
 if 'aprovadas' not in st.session_state:
     st.session_state.aprovadas = {}
 
@@ -390,7 +340,6 @@ with col_esquerda:
     for semestre, materias in grade_selecionada.items():
         with st.expander(semestre, expanded=True):
             for codigo, dados in materias.items():
-                # Usar session_state para persistir os checkboxes
                 if st.checkbox(
                     f"**{codigo}** — {dados['nome']}", 
                     key=f"chk-{codigo}",
