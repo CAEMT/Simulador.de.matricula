@@ -49,6 +49,46 @@ st.markdown("""
         margin-bottom: 30px; 
     }
 
+    /* Barra de Status */
+    .status-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 16px 24px;
+        margin: 20px 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+        border-radius: 8px;
+        border: 2px solid var(--border-color);
+    }
+
+    .status-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .status-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--muted-color);
+    }
+
+    .status-value {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--unifei-color);
+    }
+
+    .status-divider {
+        height: 40px;
+        width: 2px;
+        background-color: var(--border-color);
+    }
+
     /* Cartões de sugestão / bloqueio */
     .sugestao-item {
         padding: 12px 16px;
@@ -333,6 +373,29 @@ with col_esquerda:
 
 # Obter lista de aprovadas
 aprovadas = [cod for cod, marcado in st.session_state.aprovadas.items() if marcado]
+
+# Calcular total de matérias na grade
+total_materias = sum(len(materias) for semestre, materias in grade_selecionada.items())
+
+# Barra de Status com informações
+st.markdown(f"""
+    <div class="status-bar">
+        <div class="status-item">
+            <div class="status-label">Matérias Concluídas</div>
+            <div class="status-value">{len(aprovadas)}</div>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item">
+            <div class="status-label">Total de Matérias</div>
+            <div class="status-value">{total_materias}</div>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-item">
+            <div class="status-label">Progresso</div>
+            <div class="status-value">{int((len(aprovadas) / total_materias * 100)) if total_materias > 0 else 0}%</div>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
 with col_direita:
     st.markdown("### 2. Situação para o próximo semestre")
