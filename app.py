@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilização customizada adaptável (Modo Claro e Escuro)
+# Estilização customizada (Modo Claro apenas)
 st.markdown("""
     <style>
     /* 1. Cores Padrão (Modo Claro) */
@@ -25,24 +25,6 @@ st.markdown("""
         --blocked-bg: #fce8e6;
         --blocked-border: #c5221f;
         --blocked-text: #a50e0e;
-    }
-
-    /* 2. Cores para Modo Escuro */
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --caemt-color: #d8b4fe;
-            --unifei-color: #7dd3fc;
-            --muted-color: #9ca3af;
-            --border-color: #374151;
-            
-            --suggestion-bg: #0f3822;
-            --suggestion-border: #34d399;
-            --suggestion-text: #a7f3d0;
-            
-            --blocked-bg: #3c1618;
-            --blocked-border: #f87171;
-            --blocked-text: #fecaca;
-        }
     }
 
     /* Elementos de marca e cabeçalho */
