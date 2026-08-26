@@ -386,6 +386,107 @@ hr {
         height: 34px;
     }
 }
+
+/* ==========================================================
+   CORREÇÃO DEFINITIVA DOS CONTROLES ESCUROS
+   Compatível com versões recentes do Streamlit / BaseWeb
+   ========================================================== */
+
+/* Selectbox: força todas as camadas visuais do controle para branco */
+[data-testid="stSelectbox"] [data-baseweb="select"],
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stSelectbox"] [data-baseweb="select"] > div > div {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: var(--text-color) !important;
+    -webkit-text-fill-color: var(--text-color) !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] {
+    border-radius: 9px !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+    border: 1px solid var(--border-color) !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] span,
+[data-testid="stSelectbox"] [data-baseweb="select"] input,
+[data-testid="stSelectbox"] [data-baseweb="select"] p {
+    color: var(--text-color) !important;
+    -webkit-text-fill-color: var(--text-color) !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] svg {
+    color: var(--text-color) !important;
+    fill: var(--text-color) !important;
+}
+
+/* Selectbox aberto */
+[data-baseweb="popover"] [role="listbox"],
+[data-baseweb="popover"] [role="option"],
+[data-baseweb="menu"],
+[role="listbox"] {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: var(--text-color) !important;
+}
+
+[data-baseweb="popover"] [role="option"]:hover,
+[data-baseweb="popover"] [role="option"][aria-selected="true"] {
+    background: #F1F4F8 !important;
+    background-color: #F1F4F8 !important;
+    color: var(--text-color) !important;
+}
+
+/* Checkbox: versões recentes colocam data-baseweb no label */
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > span:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > div:first-child {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    border-color: #98A2B3 !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > span:first-child > div,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > div:first-child > div {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #98A2B3 !important;
+    box-shadow: none !important;
+}
+
+/* Estado desmarcado - :has é suportado pelos navegadores atuais */
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > span:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > span:first-child > div,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child > div {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    border-color: #98A2B3 !important;
+}
+
+/* Estado marcado */
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child > div,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child > div {
+    background: var(--caemt-color) !important;
+    background-color: var(--caemt-color) !important;
+    border-color: var(--caemt-color) !important;
+}
+
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+}
+
+/* Fallback para checkbox nativo, caso o DOM mude novamente */
+[data-testid="stCheckbox"] input[type="checkbox"] {
+    accent-color: var(--caemt-color) !important;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
