@@ -224,9 +224,17 @@ h3 {
     margin-bottom: 22px;
 }
 
+.semester-badge-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding-top: 29px;
+}
+
 .semester-badge {
     width: fit-content;
-    margin: 0 auto 24px auto;
+    margin: 0;
     padding: 7px 12px;
     border-radius: 999px;
     background: #EEF4FF;
@@ -234,6 +242,7 @@ h3 {
     color: var(--unifei-color) !important;
     font-size: 0.84rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 [data-testid="stWidgetLabel"] p,
@@ -409,6 +418,16 @@ hr {
 
     .status-divider {
         height: 34px;
+    }
+
+    .semester-badge-container {
+        justify-content: flex-start;
+        padding-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .semester-badge {
+        white-space: normal;
     }
 }
 </style>
@@ -770,7 +789,7 @@ st.markdown(
 # SELEÇÃO DA MATRIZ
 # ============================================================
 
-col_grade, _ = st.columns([1.2, 2.8])
+col_grade, col_planejamento = st.columns([1.2, 2.8])
 
 with col_grade:
     grade_versao = st.selectbox(
@@ -786,10 +805,13 @@ inicializar_estado(grade_versao, DISCIPLINAS)
 
 semestre_oferta, semestre_texto = proximo_semestre_referencia()
 
-st.markdown(
-    f'<div class="semester-badge">Grade {escapar(grade_versao)} · Planejamento automático: {escapar(semestre_texto)}</div>',
-    unsafe_allow_html=True,
-)
+with col_planejamento:
+    st.markdown(
+        '<div class="semester-badge-container">'
+        f'<div class="semester-badge">Grade {escapar(grade_versao)} · Planejamento automático: {escapar(semestre_texto)}</div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
 
 if grade_versao == "2016":
     st.caption(
