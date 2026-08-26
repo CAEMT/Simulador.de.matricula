@@ -6,25 +6,41 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilização customizada (Modo Claro apenas)
+# Estilização customizada — adaptável aos temas claro e escuro
+# As cores-base são definidas em .streamlit/config.toml.
+# Aqui usamos as variáveis CSS do próprio Streamlit para que os componentes
+# HTML personalizados acompanhem automaticamente o tema ativo do usuário.
 st.markdown("""
     <style>
-    /* 1. Cores Padrão (Modo Claro) */
     :root {
-        --caemt-color: #4a148c;
-        --unifei-color: #0056b3;
-        --muted-color: #4b5563;
-        --border-color: #d1d5db;
-        
-        /* Sugestão (Verde) */
-        --suggestion-bg: #e6f4ea;
-        --suggestion-border: #137333;
-        --suggestion-text: #0d652d;
-        
-        /* Bloqueada (Vermelho) */
-        --blocked-bg: #fce8e6;
-        --blocked-border: #c5221f;
-        --blocked-text: #a50e0e;
+        /* Marca */
+        --caemt-color: var(--st-violet-text-color, #4C1D95);
+        --unifei-color: var(--st-blue-text-color, #004C9E);
+
+        /* Superfícies e texto */
+        --app-bg: var(--st-background-color, #F8FAFC);
+        --surface-color: var(--st-secondary-background-color, #EEF2F7);
+        --text-color: var(--st-text-color, #172033);
+        --muted-color: var(--st-gray-text-color, #475467);
+        --border-color: var(--st-border-color, #D0D7E2);
+
+        /* Sugestão / disciplina liberada */
+        --suggestion-bg: var(--st-green-background-color, #EAF8EF);
+        --suggestion-border: var(--st-green-color, #15803D);
+        --suggestion-text: var(--st-green-text-color, #166534);
+
+        /* Bloqueada / não ofertada */
+        --blocked-bg: var(--st-red-background-color, #FDECEC);
+        --blocked-border: var(--st-red-color, #C62828);
+        --blocked-text: var(--st-red-text-color, #9B1C1C);
+    }
+
+    /* Garante que os elementos HTML personalizados acompanhem o tema */
+    .brand-container,
+    .status-bar,
+    .sugestao-item,
+    .divisoria {
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
     /* Elementos de marca e cabeçalho */
@@ -35,18 +51,26 @@ st.markdown("""
         font-size: 1.1rem;
         margin-bottom: -10px;
     }
-    .brand-caemt { color: var(--caemt-color); }
-    .brand-unifei { color: var(--unifei-color); }
-    
-    h1 { 
-        text-align: center; 
-        font-weight: 800; 
-        margin-top: 10px; 
+
+    .brand-caemt {
+        color: var(--caemt-color);
     }
-    .subtitle { 
-        text-align: center; 
-        color: var(--muted-color); 
-        margin-bottom: 30px; 
+
+    .brand-unifei {
+        color: var(--unifei-color);
+    }
+
+    h1 {
+        text-align: center;
+        font-weight: 800;
+        margin-top: 10px;
+        color: var(--text-color);
+    }
+
+    .subtitle {
+        text-align: center;
+        color: var(--muted-color);
+        margin-bottom: 30px;
     }
 
     /* Barra de Status */
@@ -57,9 +81,9 @@ st.markdown("""
         gap: 20px;
         padding: 16px 24px;
         margin: 20px 0;
-        background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-        border-radius: 8px;
-        border: 2px solid var(--border-color);
+        background-color: var(--surface-color);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
     }
 
     .status-item {
@@ -67,6 +91,7 @@ st.markdown("""
         flex-direction: column;
         align-items: center;
         gap: 6px;
+        min-width: 110px;
     }
 
     .status-label {
@@ -85,7 +110,7 @@ st.markdown("""
 
     .status-divider {
         height: 40px;
-        width: 2px;
+        width: 1px;
         background-color: var(--border-color);
     }
 
@@ -94,21 +119,24 @@ st.markdown("""
         padding: 12px 16px;
         margin-bottom: 10px;
         background-color: var(--suggestion-bg);
-        border-left: 4px solid var(--suggestion-border);
-        border-radius: 6px;
+        border: 1px solid var(--suggestion-border);
+        border-left-width: 4px;
+        border-radius: 8px;
         color: var(--suggestion-text);
     }
-    .sugestao-item strong { 
-        color: var(--suggestion-text); 
+
+    .sugestao-item strong {
+        color: var(--suggestion-text);
     }
 
     .bloqueada-oferta {
         background-color: var(--blocked-bg);
-        border-left: 4px solid var(--blocked-border);
+        border-color: var(--blocked-border);
         color: var(--blocked-text);
     }
-    .bloqueada-oferta strong { 
-        color: var(--blocked-text); 
+
+    .bloqueada-oferta strong {
+        color: var(--blocked-text);
     }
 
     .aviso-oferta {
@@ -117,7 +145,7 @@ st.markdown("""
         font-weight: 600;
         color: var(--blocked-text);
         margin-top: 4px;
-        opacity: 0.9;
+        opacity: 0.95;
     }
 
     .divisoria {
@@ -127,6 +155,28 @@ st.markdown("""
         font-size: 0.8rem;
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 6px;
+    }
+
+    /* Ajustes para telas menores */
+    @media (max-width: 700px) {
+        .status-bar {
+            gap: 10px;
+            padding: 14px 10px;
+        }
+
+        .status-item {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .status-value {
+            font-size: 1.35rem;
+        }
+
+        .status-label {
+            font-size: 0.65rem;
+            text-align: center;
+        }
     }
     </style>
 """, unsafe_allow_html=True)
