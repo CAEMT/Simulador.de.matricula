@@ -4,9 +4,7 @@ import html
 import streamlit as st
 
 
-# ============================================================
-# CONFIGURAÇÃO DA PÁGINA
-# ============================================================
+
 
 st.set_page_config(
     page_title="Fluxograma Inteligente do curso de Engenharia de Materiais da UNIFEI",
@@ -15,9 +13,7 @@ st.set_page_config(
 )
 
 
-# ============================================================
-# ESTILO - SOMENTE MODO CLARO
-# ============================================================
+
 
 st.markdown(
     """
@@ -296,18 +292,7 @@ hr {
 )
 
 
-# ============================================================
-# MATRIZES CURRICULARES
-# ============================================================
-#
-# "oferta":
-#   impar   -> 1º semestre do ano
-#   par     -> 2º semestre do ano
-#   regular -> pode ser ofertada nos dois semestres
-#
-# "req" contém os componentes que precisam estar concluídos
-# para a disciplina aparecer como liberada no simulador.
-# ============================================================
+
 
 MATRIZ_2023 = {
     "1º Período": {
@@ -674,9 +659,7 @@ if grade_versao == "2016":
     )
 
 
-# ============================================================
-# CONTROLES RÁPIDOS
-# ============================================================
+
 
 controle1, controle2, espaco = st.columns([1, 1, 4])
 
@@ -695,16 +678,12 @@ with controle2:
 st.markdown("---")
 
 
-# ============================================================
-# LAYOUT PRINCIPAL
-# ============================================================
+
 
 col_esquerda, col_direita = st.columns([1.18, 0.82], gap="large")
 
 
-# ============================================================
-# COLUNA ESQUERDA - TODAS AS DISCIPLINAS
-# ============================================================
+
 
 with col_esquerda:
     st.markdown("### 1. Disciplinas concluídas")
@@ -750,9 +729,7 @@ with col_esquerda:
                 )
 
 
-# ============================================================
-# CÁLCULOS DO ESTADO ATUAL
-# ============================================================
+
 
 concluidas = disciplinas_concluidas(grade_versao, DISCIPLINAS)
 total_materias = len(DISCIPLINAS)
@@ -783,9 +760,7 @@ for codigo, dados in DISCIPLINAS.items():
         liberadas_nao_ofertadas.append((codigo, dados))
 
 
-# ============================================================
-# BARRA DE STATUS
-# ============================================================
+
 
 st.markdown(
     '<div class="status-bar">'
@@ -808,9 +783,7 @@ st.markdown(
 )
 
 
-# ============================================================
-# COLUNA DIREITA - RESULTADOS
-# ============================================================
+
 
 with col_direita:
     st.markdown("### 2. Situação para o próximo semestre")
@@ -840,9 +813,7 @@ with col_direita:
                 renderizar_bloqueada(codigo, dados, faltantes)
 
 
-# ============================================================
-# RODAPÉ
-# ============================================================
+
 
 st.markdown("---")
 st.caption(
