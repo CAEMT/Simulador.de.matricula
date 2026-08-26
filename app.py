@@ -388,103 +388,252 @@ hr {
 }
 
 /* ==========================================================
-   CORREÇÃO DEFINITIVA DOS CONTROLES ESCUROS
-   Compatível com versões recentes do Streamlit / BaseWeb
+   CORREÇÃO DOS FUNDOS ESCUROS DO STREAMLIT
+   Mantém os widgets nativos em modo claro, mesmo quando o
+   navegador ou o tema global do Streamlit estiver em modo escuro.
    ========================================================== */
 
-/* Selectbox: força todas as camadas visuais do controle para branco */
-[data-testid="stSelectbox"] [data-baseweb="select"],
-[data-testid="stSelectbox"] [data-baseweb="select"] > div,
-[data-testid="stSelectbox"] [data-baseweb="select"] > div > div {
+/* Aplicação e containers principais */
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"] {
+    color-scheme: light !important;
+    background-color: #FFFFFF !important;
+    color: var(--text-color) !important;
+}
+
+/* Cabeçalho do Streamlit */
+[data-testid="stHeader"],
+[data-testid="stToolbar"] {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    color-scheme: light !important;
+}
+
+/* ----------------------------------------------------------
+   SELECTBOX
+   ---------------------------------------------------------- */
+[data-testid="stSelectbox"],
+[data-testid="stSelectbox"] > div,
+[data-testid="stSelectbox"] div[data-baseweb="select"],
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div {
+    color-scheme: light !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div {
     background: #FFFFFF !important;
     background-color: #FFFFFF !important;
     color: var(--text-color) !important;
     -webkit-text-fill-color: var(--text-color) !important;
 }
 
-[data-testid="stSelectbox"] [data-baseweb="select"] {
-    border-radius: 9px !important;
-}
-
-[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
     border: 1px solid var(--border-color) !important;
+    border-radius: 9px !important;
     box-shadow: none !important;
 }
 
-[data-testid="stSelectbox"] [data-baseweb="select"] span,
-[data-testid="stSelectbox"] [data-baseweb="select"] input,
-[data-testid="stSelectbox"] [data-baseweb="select"] p {
+[data-testid="stSelectbox"] div[data-baseweb="select"] span,
+[data-testid="stSelectbox"] div[data-baseweb="select"] input,
+[data-testid="stSelectbox"] div[data-baseweb="select"] p {
     color: var(--text-color) !important;
     -webkit-text-fill-color: var(--text-color) !important;
 }
 
-[data-testid="stSelectbox"] [data-baseweb="select"] svg {
+[data-testid="stSelectbox"] div[data-baseweb="select"] svg {
     color: var(--text-color) !important;
     fill: var(--text-color) !important;
 }
 
-/* Selectbox aberto */
-[data-baseweb="popover"] [role="listbox"],
-[data-baseweb="popover"] [role="option"],
+/* Menu aberto do selectbox */
+[data-baseweb="popover"],
+[data-baseweb="popover"] > div,
 [data-baseweb="menu"],
 [role="listbox"] {
     background: #FFFFFF !important;
     background-color: #FFFFFF !important;
     color: var(--text-color) !important;
+    color-scheme: light !important;
 }
 
-[data-baseweb="popover"] [role="option"]:hover,
-[data-baseweb="popover"] [role="option"][aria-selected="true"] {
+[role="option"] {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: var(--text-color) !important;
+}
+
+[role="option"] *,
+[data-baseweb="popover"] * {
+    color-scheme: light !important;
+}
+
+[role="option"]:hover,
+[role="option"][aria-selected="true"] {
     background: #F1F4F8 !important;
     background-color: #F1F4F8 !important;
     color: var(--text-color) !important;
 }
 
-/* Checkbox: versões recentes colocam data-baseweb no label */
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > span:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > div:first-child {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    border-color: #98A2B3 !important;
-    box-shadow: none !important;
+/* ----------------------------------------------------------
+   BOTÕES
+   ---------------------------------------------------------- */
+[data-testid="stButton"],
+[data-testid="stButton"] > div {
+    color-scheme: light !important;
 }
 
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > span:first-child > div,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > div:first-child > div {
+[data-testid="stButton"] button,
+.stButton button,
+button[kind="secondary"] {
     background: #FFFFFF !important;
     background-color: #FFFFFF !important;
-    border: 1.5px solid #98A2B3 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
     box-shadow: none !important;
+    color-scheme: light !important;
 }
 
-/* Estado desmarcado - :has é suportado pelos navegadores atuais */
+[data-testid="stButton"] button *,
+.stButton button * {
+    color: inherit !important;
+}
+
+[data-testid="stButton"] button:hover,
+.stButton button:hover,
+button[kind="secondary"]:hover {
+    background: #FAF8FC !important;
+    background-color: #FAF8FC !important;
+    color: var(--caemt-color) !important;
+    border-color: var(--caemt-color) !important;
+}
+
+[data-testid="stButton"] button:focus,
+[data-testid="stButton"] button:focus-visible,
+[data-testid="stButton"] button:active {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: var(--text-color) !important;
+    border-color: var(--caemt-color) !important;
+    box-shadow: 0 0 0 1px var(--caemt-color) !important;
+}
+
+[data-testid="stButton"] button:disabled {
+    background: #F2F4F7 !important;
+    background-color: #F2F4F7 !important;
+    color: #98A2B3 !important;
+    border-color: #E4E7EC !important;
+    opacity: 1 !important;
+}
+
+/* ----------------------------------------------------------
+   CHECKBOX
+   ---------------------------------------------------------- */
+[data-testid="stCheckbox"],
+[data-testid="stCheckbox"] label,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] {
+    color-scheme: light !important;
+}
+
+[data-testid="stCheckbox"] label,
+[data-testid="stCheckbox"] p {
+    color: var(--text-color) !important;
+}
+
+/* Caixa desmarcada - contempla diferentes versões do BaseWeb */
 [data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > span:first-child,
 [data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > span:first-child > div,
 [data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child > div {
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child > div,
+[data-testid="stCheckbox"] span[data-baseweb="checkbox"]:has(input:not(:checked)) > div {
     background: #FFFFFF !important;
     background-color: #FFFFFF !important;
     border-color: #98A2B3 !important;
+    box-shadow: none !important;
 }
 
 /* Estado marcado */
 [data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child,
 [data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child > div,
 [data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child > div {
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child > div,
+[data-testid="stCheckbox"] span[data-baseweb="checkbox"]:has(input:checked) > div {
     background: var(--caemt-color) !important;
     background-color: var(--caemt-color) !important;
     border-color: var(--caemt-color) !important;
 }
 
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) svg {
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) svg,
+[data-testid="stCheckbox"] span[data-baseweb="checkbox"]:has(input:checked) svg {
     color: #FFFFFF !important;
     fill: #FFFFFF !important;
 }
 
-/* Fallback para checkbox nativo, caso o DOM mude novamente */
+/* Fallback caso o checkbox seja renderizado como controle nativo */
 [data-testid="stCheckbox"] input[type="checkbox"] {
     accent-color: var(--caemt-color) !important;
+}
+
+/* ----------------------------------------------------------
+   EXPANDERS
+   ---------------------------------------------------------- */
+[data-testid="stExpander"],
+[data-testid="stExpander"] > details,
+[data-testid="stExpanderDetails"],
+[data-testid="stExpanderDetails"] > div,
+[data-testid="stExpanderDetails"] [data-testid="stVerticalBlock"] {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color-scheme: light !important;
+}
+
+[data-testid="stExpander"] {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 9px !important;
+    overflow: hidden;
+}
+
+[data-testid="stExpander"] summary {
+    background: var(--secondary-background) !important;
+    background-color: var(--secondary-background) !important;
+    color: var(--text-color) !important;
+}
+
+[data-testid="stExpander"] summary:hover {
+    background: #EEF2F7 !important;
+    background-color: #EEF2F7 !important;
+}
+
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary svg {
+    color: var(--text-color) !important;
+}
+
+/* ----------------------------------------------------------
+   ALERTAS / MENSAGENS NATIVAS
+   ---------------------------------------------------------- */
+[data-testid="stAlert"],
+[data-testid="stAlert"] > div {
+    color-scheme: light !important;
+}
+
+[data-testid="stAlert"] p,
+[data-testid="stAlert"] span {
+    color: var(--text-color) !important;
+}
+
+/* ----------------------------------------------------------
+   TOOLTIP
+   ---------------------------------------------------------- */
+[data-baseweb="tooltip"],
+[data-baseweb="tooltip"] > div {
+    background-color: #FFFFFF !important;
+    color: var(--text-color) !important;
+    color-scheme: light !important;
 }
 
 </style>
