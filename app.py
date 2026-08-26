@@ -18,434 +18,445 @@ st.set_page_config(
 
 st.markdown(
     """
-    <style>
+<style>
 
-    /* ========================================================
-       PALETA PRINCIPAL
-       ======================================================== */
+/* ==========================================================
+   PALETA
+   ========================================================== */
 
-    :root {
-        --caemt-color: #4A148C;
-        --caemt-light: #F3E8FF;
+:root {
+    --caemt-color: #4A148C;
+    --unifei-color: #0056B3;
 
-        --unifei-color: #0056B3;
-        --unifei-light: #E8F1FB;
+    --background-color: #FFFFFF;
+    --secondary-background: #F7F9FC;
 
-        --background-color: #FFFFFF;
-        --secondary-background: #F7F9FC;
+    --text-color: #1F2937;
+    --muted-color: #5F6B7A;
 
-        --text-color: #1F2937;
-        --muted-color: #5F6B7A;
+    --border-color: #D8DEE8;
 
-        --border-color: #D8DEE8;
+    /* Verde — disciplina disponível */
+    --suggestion-bg: #EAF7EE;
+    --suggestion-border: #18864B;
+    --suggestion-text: #126836;
 
-        /* Matéria disponível */
-        --suggestion-bg: #EAF7EE;
-        --suggestion-border: #18864B;
-        --suggestion-text: #126836;
-
-        /* Matéria não ofertada */
-        --blocked-bg: #FDECEC;
-        --blocked-border: #C93434;
-        --blocked-text: #A32121;
-    }
+    /* Vermelho — liberada, mas não ofertada */
+    --blocked-bg: #FDECEC;
+    --blocked-border: #C93434;
+    --blocked-text: #A32121;
+}
 
 
-    /* ========================================================
-       FORÇA O STREAMLIT PARA O MODO CLARO
-       ======================================================== */
+/* ==========================================================
+   MODO CLARO
+   ========================================================== */
 
-    html,
-    body,
-    [class*="css"],
-    [data-testid="stAppViewContainer"],
-    [data-testid="stMain"] {
-        color-scheme: light !important;
-    }
+html,
+body,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"] {
+    color-scheme: light !important;
+}
 
-    [data-testid="stAppViewContainer"] {
-        background-color: var(--background-color) !important;
-        color: var(--text-color) !important;
-    }
+[data-testid="stAppViewContainer"] {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
 
-    [data-testid="stMainBlockContainer"] {
-        background-color: var(--background-color) !important;
-    }
+[data-testid="stMain"] {
+    background-color: var(--background-color) !important;
+}
 
-    [data-testid="stHeader"] {
-        background-color: var(--background-color) !important;
-    }
+[data-testid="stMainBlockContainer"] {
+    background-color: var(--background-color) !important;
+}
 
-
-    /* ========================================================
-       REMOVE CONTROLES DO STREAMLIT QUE PERMITEM TROCA DE TEMA
-       ======================================================== */
-
-    #MainMenu {
-        visibility: hidden;
-    }
-
-    footer {
-        visibility: hidden;
-    }
-
-    [data-testid="stToolbar"] {
-        visibility: hidden;
-        height: 0;
-        position: fixed;
-    }
+[data-testid="stHeader"] {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
 
 
-    /* ========================================================
-       TEXTO GERAL
-       ======================================================== */
+/* ==========================================================
+   MENU / ELEMENTOS DO STREAMLIT
+   ========================================================== */
 
-    body,
-    p,
-    span,
-    label,
-    div {
-        color: var(--text-color);
-    }
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
 
 
-    /* ========================================================
-       CABEÇALHO / MARCAS
-       ======================================================== */
+/* ==========================================================
+   CABEÇALHO DE MARCA
+   ========================================================== */
+
+.brand-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.1rem;
+    font-weight: 800;
+
+    margin-bottom: -8px;
+}
+
+.brand-caemt {
+    color: var(--caemt-color) !important;
+}
+
+.brand-unifei {
+    color: var(--unifei-color) !important;
+}
+
+
+/* ==========================================================
+   TÍTULOS
+   ========================================================== */
+
+h1 {
+    text-align: center;
+
+    color: var(--text-color) !important;
+
+    font-weight: 800;
+
+    margin-top: 10px;
+}
+
+h2,
+h3 {
+    color: var(--text-color) !important;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: var(--muted-color) !important;
+
+    margin-top: -7px;
+    margin-bottom: 30px;
+
+    font-size: 1rem;
+}
+
+
+/* ==========================================================
+   LABELS
+   ========================================================== */
+
+[data-testid="stWidgetLabel"] p {
+    color: var(--text-color) !important;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   SELECTBOX
+   ========================================================== */
+
+div[data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+
+    color: var(--text-color) !important;
+
+    border-color: var(--border-color) !important;
+}
+
+div[data-baseweb="select"] span {
+    color: var(--text-color) !important;
+}
+
+div[data-baseweb="select"] svg {
+    fill: var(--text-color) !important;
+}
+
+
+/* Menu aberto do selectbox */
+
+div[data-baseweb="popover"] {
+    color-scheme: light !important;
+}
+
+div[data-baseweb="popover"] ul {
+    background-color: #FFFFFF !important;
+}
+
+div[data-baseweb="popover"] li {
+    background-color: #FFFFFF !important;
+
+    color: var(--text-color) !important;
+}
+
+div[data-baseweb="popover"] li:hover {
+    background-color: #F1F4F8 !important;
+}
+
+
+/* ==========================================================
+   CHECKBOX
+   ========================================================== */
+
+[data-testid="stCheckbox"] p {
+    color: var(--text-color) !important;
+}
+
+
+/* ==========================================================
+   EXPANDERS
+   ========================================================== */
+
+[data-testid="stExpander"] {
+    background-color: #FFFFFF !important;
+
+    border: 1px solid var(--border-color) !important;
+
+    border-radius: 8px !important;
+
+    overflow: hidden;
+}
+
+[data-testid="stExpander"] summary {
+    background-color: var(--secondary-background) !important;
+}
+
+[data-testid="stExpander"] summary:hover {
+    background-color: #EEF2F7 !important;
+}
+
+[data-testid="stExpander"] summary p {
+    color: var(--text-color) !important;
+
+    font-weight: 650;
+}
+
+
+/* ==========================================================
+   DIVISORES
+   ========================================================== */
+
+hr {
+    border-color: var(--border-color) !important;
+
+    opacity: 0.8;
+}
+
+
+/* ==========================================================
+   BARRA DE STATUS
+   ========================================================== */
+
+.status-bar {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 18px 24px;
+
+    margin: 24px 0;
+
+    background-color: var(--secondary-background);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 1px 2px rgba(16, 24, 40, 0.04),
+        0 2px 6px rgba(16, 24, 40, 0.03);
+}
+
+.status-item {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    min-width: 130px;
+}
+
+.status-label {
+    color: var(--muted-color) !important;
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+
+    text-align: center;
+}
+
+.status-value {
+    color: var(--unifei-color) !important;
+
+    font-size: 1.75rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+.status-divider {
+    width: 1px;
+
+    height: 42px;
+
+    background-color: var(--border-color);
+}
+
+
+/* ==========================================================
+   MATÉRIAS DISPONÍVEIS
+   ========================================================== */
+
+.sugestao-item {
+    padding: 13px 16px;
+
+    margin-bottom: 10px;
+
+    background-color: var(--suggestion-bg);
+
+    border: 1px solid #CAE9D5;
+
+    border-left: 4px solid var(--suggestion-border);
+
+    border-radius: 7px;
+
+    color: var(--suggestion-text) !important;
+
+    font-size: 0.95rem;
+
+    line-height: 1.45;
+}
+
+.sugestao-item strong {
+    color: var(--suggestion-text) !important;
+
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   MATÉRIAS NÃO OFERTADAS
+   ========================================================== */
+
+.bloqueada-oferta {
+    background-color: var(--blocked-bg);
+
+    border: 1px solid #F4CDCD;
+
+    border-left: 4px solid var(--blocked-border);
+
+    color: var(--blocked-text) !important;
+}
+
+.bloqueada-oferta strong {
+    color: var(--blocked-text) !important;
+}
+
+.aviso-oferta {
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--blocked-text) !important;
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   DIVISÓRIA DE MATÉRIAS NÃO OFERTADAS
+   ========================================================== */
+
+.divisoria {
+    margin: 25px 0 15px 0;
+
+    padding-bottom: 7px;
+
+    border-bottom: 1px solid var(--border-color);
+
+    color: var(--muted-color) !important;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* ==========================================================
+   ALERTAS
+   ========================================================== */
+
+[data-testid="stAlert"] {
+    color-scheme: light !important;
+}
+
+
+/* ==========================================================
+   CELULAR
+   ========================================================== */
+
+@media (max-width: 768px) {
 
     .brand-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        font-weight: 800;
-        font-size: 1.10rem;
-
-        margin-bottom: -10px;
-    }
-
-    .brand-caemt {
-        color: var(--caemt-color) !important;
-    }
-
-    .brand-unifei {
-        color: var(--unifei-color) !important;
-    }
-
-
-    /* ========================================================
-       TÍTULO
-       ======================================================== */
-
-    h1 {
-        text-align: center;
-        font-weight: 800;
-        color: var(--text-color) !important;
-
-        margin-top: 10px;
-    }
-
-    h2,
-    h3 {
-        color: var(--text-color) !important;
-    }
-
-    .subtitle {
-        text-align: center;
-
-        color: var(--muted-color) !important;
-
-        margin-top: -5px;
-        margin-bottom: 30px;
-
-        font-size: 1rem;
-    }
-
-
-    /* ========================================================
-       SELECTBOX
-       ======================================================== */
-
-    div[data-baseweb="select"] > div {
-        background-color: #FFFFFF !important;
-        color: var(--text-color) !important;
-
-        border-color: var(--border-color) !important;
-    }
-
-    div[data-baseweb="select"] span {
-        color: var(--text-color) !important;
-    }
-
-    div[data-baseweb="popover"] {
-        color-scheme: light !important;
-    }
-
-    div[data-baseweb="popover"] ul {
-        background-color: #FFFFFF !important;
-    }
-
-    div[data-baseweb="popover"] li {
-        background-color: #FFFFFF !important;
-        color: var(--text-color) !important;
-    }
-
-    div[data-baseweb="popover"] li:hover {
-        background-color: var(--secondary-background) !important;
-    }
-
-
-    /* ========================================================
-       CHECKBOXES
-       ======================================================== */
-
-    [data-testid="stCheckbox"] label {
-        color: var(--text-color) !important;
-    }
-
-    [data-testid="stCheckbox"] p {
-        color: var(--text-color) !important;
-    }
-
-
-    /* ========================================================
-       EXPANDERS
-       ======================================================== */
-
-    [data-testid="stExpander"] {
-        background-color: #FFFFFF !important;
-
-        border: 1px solid var(--border-color) !important;
-        border-radius: 8px !important;
-
-        overflow: hidden;
-    }
-
-    [data-testid="stExpander"] summary {
-        background-color: var(--secondary-background) !important;
-        color: var(--text-color) !important;
-    }
-
-    [data-testid="stExpander"] summary:hover {
-        background-color: #EEF2F7 !important;
-    }
-
-    [data-testid="stExpander"] summary p {
-        color: var(--text-color) !important;
-        font-weight: 650;
-    }
-
-
-    /* ========================================================
-       LINHAS DIVISÓRIAS
-       ======================================================== */
-
-    hr {
-        border-color: var(--border-color) !important;
-        opacity: 0.8;
-    }
-
-
-    /* ========================================================
-       BARRA DE STATUS
-       ======================================================== */
-
-    .status-bar {
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        gap: 30px;
-
-        padding: 18px 24px;
-
-        margin: 24px 0;
-
-        background-color: var(--secondary-background);
-
-        border-radius: 10px;
-
-        border: 1px solid var(--border-color);
-
-        box-shadow:
-            0 1px 2px rgba(16, 24, 40, 0.04),
-            0 2px 6px rgba(16, 24, 40, 0.03);
-    }
-
-    .status-item {
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 5px;
-
-        min-width: 125px;
-    }
-
-    .status-label {
-        font-size: 0.72rem;
-
-        font-weight: 700;
-
-        text-transform: uppercase;
-
-        letter-spacing: 0.6px;
-
-        color: var(--muted-color) !important;
-
-        text-align: center;
-    }
-
-    .status-value {
-        font-size: 1.75rem;
-
-        font-weight: 800;
-
-        color: var(--unifei-color) !important;
-
-        line-height: 1;
-    }
-
-    .status-divider {
-        height: 42px;
-
-        width: 1px;
-
-        background-color: var(--border-color);
-    }
-
-
-    /* ========================================================
-       CARTÕES DE DISCIPLINAS LIBERADAS
-       ======================================================== */
-
-    .sugestao-item {
-        padding: 13px 16px;
-
-        margin-bottom: 10px;
-
-        background-color: var(--suggestion-bg);
-
-        border: 1px solid #CAE9D5;
-
-        border-left: 4px solid var(--suggestion-border);
-
-        border-radius: 7px;
-
-        color: var(--suggestion-text) !important;
-
         font-size: 0.95rem;
     }
 
-    .sugestao-item strong {
-        color: var(--suggestion-text) !important;
-        font-weight: 800;
+    h1 {
+        font-size: 2rem !important;
     }
 
-
-    /* ========================================================
-       DISCIPLINAS NÃO OFERTADAS
-       ======================================================== */
-
-    .bloqueada-oferta {
-        background-color: var(--blocked-bg);
-
-        border: 1px solid #F4CDCD;
-
-        border-left: 4px solid var(--blocked-border);
-
-        color: var(--blocked-text) !important;
+    .subtitle {
+        font-size: 0.92rem;
     }
 
-    .bloqueada-oferta strong {
-        color: var(--blocked-text) !important;
+    .status-bar {
+        gap: 8px;
+
+        padding: 14px 6px;
     }
 
-    .aviso-oferta {
-        display: block;
+    .status-item {
+        min-width: 0;
 
-        font-size: 0.82rem;
-
-        font-weight: 600;
-
-        color: var(--blocked-text) !important;
-
-        margin-top: 4px;
-
-        opacity: 0.9;
+        flex: 1;
     }
 
-
-    /* ========================================================
-       DIVISÓRIA DAS DISCIPLINAS NÃO OFERTADAS
-       ======================================================== */
-
-    .divisoria {
-        margin: 25px 0 15px 0;
-
-        font-weight: 700;
-
-        color: var(--muted-color) !important;
-
-        font-size: 0.78rem;
-
-        letter-spacing: 0.3px;
-
-        border-bottom: 1px solid var(--border-color);
-
-        padding-bottom: 7px;
+    .status-label {
+        font-size: 0.59rem;
     }
 
-
-    /* ========================================================
-       ALERTAS DO STREAMLIT
-       ======================================================== */
-
-    [data-testid="stAlert"] {
-        color-scheme: light !important;
+    .status-value {
+        font-size: 1.35rem;
     }
 
-
-    /* ========================================================
-       RESPONSIVIDADE
-       ======================================================== */
-
-    @media (max-width: 768px) {
-
-        .brand-container {
-            font-size: 0.95rem;
-        }
-
-        .status-bar {
-            gap: 12px;
-
-            padding: 14px 8px;
-        }
-
-        .status-item {
-            min-width: 0;
-            flex: 1;
-        }
-
-        .status-label {
-            font-size: 0.61rem;
-        }
-
-        .status-value {
-            font-size: 1.35rem;
-        }
-
-        .status-divider {
-            height: 35px;
-        }
-
+    .status-divider {
+        height: 35px;
     }
 
-    </style>
-    """,
+}
+
+</style>
+""",
     unsafe_allow_html=True
 )
 
@@ -1439,36 +1450,23 @@ if "aprovadas" not in st.session_state:
 # ============================================================
 
 st.markdown(
-    """
-    <div class="brand-container">
-
-        <div class="brand-caemt">
-            CAEMT
-        </div>
-
-        <div class="brand-unifei">
-            UNIFEI
-        </div>
-
-    </div>
-    """,
+    '<div class="brand-container">'
+    '<div class="brand-caemt">CAEMT</div>'
+    '<div class="brand-unifei">UNIFEI</div>'
+    '</div>',
     unsafe_allow_html=True
 )
-
 
 st.markdown(
     "<h1>Fluxograma Inteligente</h1>",
     unsafe_allow_html=True
 )
 
-
 st.markdown(
-    """
-    <p class="subtitle">
-        Selecione a grade correspondente, o período letivo
-        e as disciplinas concluídas.
-    </p>
-    """,
+    '<p class="subtitle">'
+    'Selecione a grade correspondente, o período letivo '
+    'e as disciplinas concluídas.'
+    '</p>',
     unsafe_allow_html=True
 )
 
@@ -1510,7 +1508,7 @@ st.markdown("---")
 
 
 # ============================================================
-# GRADE SELECIONADA
+# GRADE ATUAL
 # ============================================================
 
 grade_selecionada = matrizes[grade_versao]
@@ -1526,15 +1524,12 @@ col_esquerda, col_direita = st.columns(
 
 
 # ============================================================
-# COLUNA ESQUERDA
+# COLUNA ESQUERDA — MATÉRIAS CONCLUÍDAS
 # ============================================================
 
 with col_esquerda:
 
-    st.markdown(
-        "### 1. Matérias concluídas"
-    )
-
+    st.markdown("### 1. Matérias concluídas")
 
     for semestre, materias in grade_selecionada.items():
 
@@ -1545,41 +1540,42 @@ with col_esquerda:
 
             for codigo, dados in materias.items():
 
+                chave_estado = (
+                    f"{grade_versao}-{codigo}"
+                )
+
                 marcado = st.checkbox(
                     f"**{codigo}** — {dados['nome']}",
-                    key=f"chk-{grade_versao}-{codigo}",
+                    key=f"chk-{chave_estado}",
                     value=st.session_state.aprovadas.get(
-                        f"{grade_versao}-{codigo}",
+                        chave_estado,
                         False
                     )
                 )
 
-
                 st.session_state.aprovadas[
-                    f"{grade_versao}-{codigo}"
+                    chave_estado
                 ] = marcado
 
 
 # ============================================================
-# MATÉRIAS APROVADAS
+# LISTA DE MATÉRIAS APROVADAS
 # ============================================================
 
 aprovadas = []
 
+for materias in grade_selecionada.values():
 
-for codigo in [
-    cod
-    for semestre in grade_selecionada.values()
-    for cod in semestre.keys()
-]:
+    for codigo in materias.keys():
 
-    chave = f"{grade_versao}-{codigo}"
+        chave = f"{grade_versao}-{codigo}"
 
-    if st.session_state.aprovadas.get(
-        chave,
-        False
-    ):
-        aprovadas.append(codigo)
+        if st.session_state.aprovadas.get(
+            chave,
+            False
+        ):
+
+            aprovadas.append(codigo)
 
 
 # ============================================================
@@ -1599,8 +1595,10 @@ total_materias = sum(
 if total_materias > 0:
 
     progresso = int(
-        len(aprovadas)
-        / total_materias
+        (
+            len(aprovadas)
+            / total_materias
+        )
         * 100
     )
 
@@ -1613,62 +1611,51 @@ else:
 # BARRA DE STATUS
 # ============================================================
 
+status_html = (
+    '<div class="status-bar">'
+
+        '<div class="status-item">'
+            '<div class="status-label">'
+                'Matérias Concluídas'
+            '</div>'
+            f'<div class="status-value">'
+                f'{len(aprovadas)}'
+            '</div>'
+        '</div>'
+
+        '<div class="status-divider"></div>'
+
+        '<div class="status-item">'
+            '<div class="status-label">'
+                'Total de Matérias'
+            '</div>'
+            f'<div class="status-value">'
+                f'{total_materias}'
+            '</div>'
+        '</div>'
+
+        '<div class="status-divider"></div>'
+
+        '<div class="status-item">'
+            '<div class="status-label">'
+                'Progresso'
+            '</div>'
+            f'<div class="status-value">'
+                f'{progresso}%'
+            '</div>'
+        '</div>'
+
+    '</div>'
+)
+
 st.markdown(
-    f"""
-    <div class="status-bar">
-
-        <div class="status-item">
-
-            <div class="status-label">
-                Matérias Concluídas
-            </div>
-
-            <div class="status-value">
-                {len(aprovadas)}
-            </div>
-
-        </div>
-
-
-        <div class="status-divider"></div>
-
-
-        <div class="status-item">
-
-            <div class="status-label">
-                Total de Matérias
-            </div>
-
-            <div class="status-value">
-                {total_materias}
-            </div>
-
-        </div>
-
-
-        <div class="status-divider"></div>
-
-
-        <div class="status-item">
-
-            <div class="status-label">
-                Progresso
-            </div>
-
-            <div class="status-value">
-                {progresso}%
-            </div>
-
-        </div>
-
-    </div>
-    """,
+    status_html,
     unsafe_allow_html=True
 )
 
 
 # ============================================================
-# COLUNA DIREITA
+# COLUNA DIREITA — PRÓXIMO SEMESTRE
 # ============================================================
 
 with col_direita:
@@ -1677,70 +1664,65 @@ with col_direita:
         "### 2. Situação para o próximo semestre"
     )
 
-
     liberadas_regulares = []
 
     liberadas_nao_ofertadas = []
 
 
     # ========================================================
-    # VERIFICA DISCIPLINAS
+    # PROCESSAMENTO DAS DISCIPLINAS
     # ========================================================
 
     for semestre, materias in grade_selecionada.items():
 
         for codigo, dados in materias.items():
 
-
-            # Já concluída
+            # Disciplina já concluída
             if codigo in aprovadas:
                 continue
 
 
-            # Verifica requisitos
+            # Verifica pré-requisitos
             tem_requisitos = all(
-                req_codigo in aprovadas
-                for req_codigo in dados["req"]
+                requisito in aprovadas
+                for requisito in dados["req"]
             )
 
 
-            if tem_requisitos:
+            if not tem_requisitos:
+                continue
 
 
-                oferta_bate = (
+            # Verifica oferta
+            oferta_bate = (
+                dados["oferta"] == "regular"
+                or
+                dados["oferta"] == periodo_atual
+            )
 
-                    dados["oferta"] == "regular"
 
-                    or
+            if oferta_bate:
 
-                    dados["oferta"] == periodo_atual
+                liberadas_regulares.append(
+                    {
+                        "codigo": codigo,
+                        "nome": dados["nome"]
+                    }
+                )
 
+            else:
+
+                liberadas_nao_ofertadas.append(
+                    {
+                        "codigo": codigo,
+                        "nome": dados["nome"],
+                        "temporada": dados["oferta"]
+                    }
                 )
 
 
-                if oferta_bate:
-
-                    liberadas_regulares.append(
-                        {
-                            "codigo": codigo,
-                            "nome": dados["nome"]
-                        }
-                    )
-
-
-                else:
-
-                    liberadas_nao_ofertadas.append(
-                        {
-                            "codigo": codigo,
-                            "nome": dados["nome"],
-                            "temporada": dados["oferta"]
-                        }
-                    )
-
-
     # ========================================================
-    # NENHUM RESULTADO
+    # SEM RESULTADOS
     # ========================================================
 
     if (
@@ -1750,15 +1732,12 @@ with col_direita:
     ):
 
         st.info(
-            """
-            Selecione as matérias ao lado
-            para calcular a compatibilidade.
-            """
+            "Selecione as matérias ao lado "
+            "para calcular a compatibilidade."
         )
 
 
     else:
-
 
         # ====================================================
         # DISCIPLINAS DISPONÍVEIS
@@ -1766,77 +1745,75 @@ with col_direita:
 
         if liberadas_regulares:
 
-            for mat in liberadas_regulares:
+            for materia in liberadas_regulares:
+
+                codigo = materia["codigo"]
+                nome = materia["nome"]
+
+                html = (
+                    '<div class="sugestao-item">'
+                    f'<strong>{codigo}</strong>'
+                    f' — {nome}'
+                    '</div>'
+                )
 
                 st.markdown(
-                    f"""
-                    <div class="sugestao-item">
-
-                        <strong>
-                            {mat['codigo']}
-                        </strong>
-
-                        — {mat['nome']}
-
-                    </div>
-                    """,
+                    html,
                     unsafe_allow_html=True
                 )
 
 
         # ====================================================
-        # DISCIPLINAS COM PRÉ-REQUISITOS, MAS NÃO OFERTADAS
+        # DISCIPLINAS NÃO OFERTADAS
         # ====================================================
 
         if liberadas_nao_ofertadas:
 
             st.markdown(
-                """
-                <div class="divisoria">
-                    MATÉRIAS LIBERADAS, MAS NÃO OFERTADAS
-                    NESTE PERÍODO
-                </div>
-                """,
+                '<div class="divisoria">'
+                'MATÉRIAS LIBERADAS, MAS NÃO OFERTADAS '
+                'NESTE PERÍODO'
+                '</div>',
                 unsafe_allow_html=True
             )
 
 
-            for mat in liberadas_nao_ofertadas:
+            for materia in liberadas_nao_ofertadas:
+
+                codigo = materia["codigo"]
+
+                nome = materia["nome"]
+
+                temporada = materia["temporada"]
 
 
-                if mat["temporada"] == "impar":
+                if temporada == "impar":
 
                     texto_temporada = (
-                        "Ofertada apenas no 1º semestre"
+                        "Ofertada apenas no "
+                        "1º semestre do ano"
                     )
 
                 else:
 
                     texto_temporada = (
-                        "Ofertada apenas no 2º semestre"
+                        "Ofertada apenas no "
+                        "2º semestre do ano"
                     )
 
 
+                html = (
+                    '<div class="sugestao-item bloqueada-oferta">'
+                    f'<strong>{codigo}</strong>'
+                    f' — {nome}'
+                    '<span class="aviso-oferta">'
+                    f'{texto_temporada}'
+                    '</span>'
+                    '</div>'
+                )
+
+
                 st.markdown(
-                    f"""
-                    <div
-                        class="
-                            sugestao-item
-                            bloqueada-oferta
-                        "
-                    >
-
-                        <strong>
-                            {mat['codigo']}
-                        </strong>
-
-                        — {mat['nome']}
-
-                        <span class="aviso-oferta">
-                            {texto_temporada}
-                        </span>
-
-                    </div>
-                    """,
+                    html,
                     unsafe_allow_html=True
                 )
