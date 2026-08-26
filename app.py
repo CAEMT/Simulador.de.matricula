@@ -68,6 +68,126 @@ footer {
     visibility: hidden;
 }
 
+
+/* ==========================================================
+   CORREÇÃO MÍNIMA DOS WIDGETS NATIVOS DO STREAMLIT
+   Mantém toda a lógica e as duas grades inalteradas.
+   ========================================================== */
+
+/* Reforça as variáveis de tema usadas pelo Streamlit. */
+:root,
+[data-testid="stAppViewContainer"] {
+    --st-primary-color: #4A148C !important;
+    --st-background-color: #FFFFFF !important;
+    --st-secondary-background-color: #F7F9FC !important;
+    --st-text-color: #1F2937 !important;
+    color-scheme: light !important;
+}
+
+/* SELECTBOX: caixa fechada */
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+    border: 1px solid #D8DEE8 !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
+[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {
+    background-color: #FFFFFF !important;
+    border-color: #98A2B3 !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"] span,
+[data-testid="stSelectbox"] div[data-baseweb="select"] div,
+[data-testid="stSelectbox"] div[data-baseweb="select"] p {
+    color: #1F2937 !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"] svg {
+    color: #1F2937 !important;
+    fill: #1F2937 !important;
+}
+
+/* SELECTBOX: menu aberto */
+div[data-baseweb="popover"],
+div[data-baseweb="menu"],
+ul[role="listbox"] {
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+}
+
+li[role="option"] {
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+}
+
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"] {
+    background-color: #F1F4F8 !important;
+    color: #1F2937 !important;
+}
+
+/* BOTÕES */
+[data-testid="stButton"] button {
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+    border: 1px solid #D8DEE8 !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stButton"] button:hover {
+    background-color: #F7F9FC !important;
+    color: #4A148C !important;
+    border-color: #4A148C !important;
+}
+
+[data-testid="stButton"] button:disabled {
+    background-color: #F7F9FC !important;
+    color: #98A2B3 !important;
+    border-color: #D8DEE8 !important;
+    opacity: 1 !important;
+}
+
+/* CHECKBOXES: cobre as estruturas usadas por versões diferentes do Streamlit/BaseWeb. */
+[data-testid="stCheckbox"] [role="checkbox"],
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > span:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"] > div:first-child {
+    background-color: #FFFFFF !important;
+    border-color: #98A2B3 !important;
+    color: #FFFFFF !important;
+}
+
+[data-testid="stCheckbox"] [role="checkbox"][aria-checked="true"],
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child,
+[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child {
+    background-color: #4A148C !important;
+    border-color: #4A148C !important;
+}
+
+[data-testid="stCheckbox"] input[type="checkbox"] {
+    accent-color: #4A148C !important;
+}
+
+[data-testid="stCheckbox"] label,
+[data-testid="stCheckbox"] label span,
+[data-testid="stCheckbox"] label p {
+    color: #1F2937 !important;
+}
+
+/* Campos BaseWeb genéricos, caso o Streamlit altere a implementação interna. */
+[data-baseweb="input"] > div,
+[data-baseweb="textarea"] > div {
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+    border-color: #D8DEE8 !important;
+}
+
+input,
+textarea {
+    color-scheme: light !important;
+}
+
 .brand-container {
     display: flex;
     justify-content: space-between;
