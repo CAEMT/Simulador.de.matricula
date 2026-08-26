@@ -725,10 +725,3 @@ st.caption(
     "Ferramenta independente e não oficial. A disponibilidade real de turmas, "
     "regras acadêmicas e eventuais alterações curriculares devem ser conferidas no SIGAA/UNIFEI."
 )
-
-
-
-                st.markdown(
-                    html,
-                    unsafe_allow_html=True
-                )
