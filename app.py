@@ -9,8 +9,7 @@ import streamlit as st
 # ============================================================
 
 st.set_page_config(
-    page_title="Fluxograma Inteligente - Engenharia de Materiais UNIFEI",
-    page_icon="🎓",
+    page_title="Fluxograma Inteligente do curso de Engenharia de Materiais da UNIFEI",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -414,7 +413,7 @@ MATRIZ_2023 = {
 }
 
 
-# Grade 2016 transcrita do código original enviado pelo usuário.
+
 MATRIZ_2016 = {
     "1º Período": {
         "EMT101": {"nome": "Introdução à EMT", "req": [], "oferta": "impar"},
@@ -509,9 +508,7 @@ MATRIZES = {
 }
 
 
-# ============================================================
-# FUNÇÕES AUXILIARES
-# ============================================================
+
 
 
 def todas_as_disciplinas(matriz):
@@ -624,9 +621,7 @@ def renderizar_bloqueada(codigo, dados, faltantes):
     )
 
 
-# ============================================================
-# CABEÇALHO
-# ============================================================
+
 
 st.markdown(
     '<div class="brand-container">'
@@ -647,9 +642,7 @@ st.markdown(
 )
 
 
-# ============================================================
-# SELEÇÃO DA MATRIZ
-# ============================================================
+
 
 col_grade, col_info = st.columns([1.2, 2.8])
 
@@ -660,10 +653,6 @@ with col_grade:
         index=0,
     )
 
-with col_info:
-    st.caption(
-        "As seleções das grades 2023 e 2016 são mantidas separadamente durante a sessão."
-    )
 
 MATRIZ_ATUAL = MATRIZES[grade_versao]
 DISCIPLINAS = todas_as_disciplinas(MATRIZ_ATUAL)
