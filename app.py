@@ -121,101 +121,6 @@ h3 {
     color: var(--text-color) !important;
 }
 
-/* ==========================================================
-   WIDGETS NATIVOS - FORÇAR APARÊNCIA CLARA
-   ========================================================== */
-
-/* Selectbox fechado */
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    box-shadow: none !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover {
-    border-color: #A9B5C5 !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] span,
-[data-testid="stSelectbox"] div[data-baseweb="select"] input {
-    color: var(--text-color) !important;
-    -webkit-text-fill-color: var(--text-color) !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] svg {
-    fill: var(--text-color) !important;
-    color: var(--text-color) !important;
-}
-
-/* Menu aberto do selectbox */
-[data-baseweb="popover"],
-[data-baseweb="popover"] > div,
-[data-baseweb="menu"],
-[role="listbox"] {
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    color-scheme: light !important;
-}
-
-[role="option"] {
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-}
-
-[role="option"]:hover,
-[role="option"][aria-selected="true"] {
-    background-color: #F1F4F8 !important;
-    color: var(--text-color) !important;
-}
-
-/* Botões */
-[data-testid="stButton"] button {
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    box-shadow: none !important;
-}
-
-[data-testid="stButton"] button:hover {
-    background-color: #FAF8FC !important;
-    color: var(--caemt-color) !important;
-    border-color: var(--caemt-color) !important;
-}
-
-[data-testid="stButton"] button:focus,
-[data-testid="stButton"] button:focus-visible {
-    color: var(--text-color) !important;
-    border-color: var(--caemt-color) !important;
-    box-shadow: 0 0 0 1px var(--caemt-color) !important;
-}
-
-[data-testid="stButton"] button:disabled {
-    background-color: #F2F4F7 !important;
-    color: #98A2B3 !important;
-    border-color: #E4E7EC !important;
-    opacity: 1 !important;
-}
-
-/* Checkbox desmarcado */
-[data-testid="stCheckbox"] span[data-baseweb="checkbox"] > div {
-    background-color: #FFFFFF !important;
-    border: 1.5px solid #98A2B3 !important;
-    box-shadow: none !important;
-}
-
-/* Checkbox marcado: mantém o roxo da identidade */
-[data-testid="stCheckbox"] span[data-baseweb="checkbox"] input:checked + div,
-[data-testid="stCheckbox"] input:checked ~ div {
-    background-color: var(--caemt-color) !important;
-    border-color: var(--caemt-color) !important;
-}
-
-[data-testid="stCheckbox"] span[data-baseweb="checkbox"] svg {
-    color: #FFFFFF !important;
-    fill: #FFFFFF !important;
-}
-
 [data-testid="stExpander"] {
     background-color: #FFFFFF !important;
     border: 1px solid var(--border-color) !important;
@@ -386,256 +291,6 @@ hr {
         height: 34px;
     }
 }
-
-/* ==========================================================
-   CORREÇÃO DOS FUNDOS ESCUROS DO STREAMLIT
-   Mantém os widgets nativos em modo claro, mesmo quando o
-   navegador ou o tema global do Streamlit estiver em modo escuro.
-   ========================================================== */
-
-/* Aplicação e containers principais */
-html,
-body,
-.stApp,
-[data-testid="stAppViewContainer"],
-[data-testid="stMain"],
-[data-testid="stMainBlockContainer"] {
-    color-scheme: light !important;
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-}
-
-/* Cabeçalho do Streamlit */
-[data-testid="stHeader"],
-[data-testid="stToolbar"] {
-    background-color: rgba(255, 255, 255, 0.96) !important;
-    color-scheme: light !important;
-}
-
-/* ----------------------------------------------------------
-   SELECTBOX
-   ---------------------------------------------------------- */
-[data-testid="stSelectbox"],
-[data-testid="stSelectbox"] > div,
-[data-testid="stSelectbox"] div[data-baseweb="select"],
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div {
-    color-scheme: light !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    -webkit-text-fill-color: var(--text-color) !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-    border: 1px solid var(--border-color) !important;
-    border-radius: 9px !important;
-    box-shadow: none !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] span,
-[data-testid="stSelectbox"] div[data-baseweb="select"] input,
-[data-testid="stSelectbox"] div[data-baseweb="select"] p {
-    color: var(--text-color) !important;
-    -webkit-text-fill-color: var(--text-color) !important;
-}
-
-[data-testid="stSelectbox"] div[data-baseweb="select"] svg {
-    color: var(--text-color) !important;
-    fill: var(--text-color) !important;
-}
-
-/* Menu aberto do selectbox */
-[data-baseweb="popover"],
-[data-baseweb="popover"] > div,
-[data-baseweb="menu"],
-[role="listbox"] {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    color-scheme: light !important;
-}
-
-[role="option"] {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-}
-
-[role="option"] *,
-[data-baseweb="popover"] * {
-    color-scheme: light !important;
-}
-
-[role="option"]:hover,
-[role="option"][aria-selected="true"] {
-    background: #F1F4F8 !important;
-    background-color: #F1F4F8 !important;
-    color: var(--text-color) !important;
-}
-
-/* ----------------------------------------------------------
-   BOTÕES
-   ---------------------------------------------------------- */
-[data-testid="stButton"],
-[data-testid="stButton"] > div {
-    color-scheme: light !important;
-}
-
-[data-testid="stButton"] button,
-.stButton button,
-button[kind="secondary"] {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    box-shadow: none !important;
-    color-scheme: light !important;
-}
-
-[data-testid="stButton"] button *,
-.stButton button * {
-    color: inherit !important;
-}
-
-[data-testid="stButton"] button:hover,
-.stButton button:hover,
-button[kind="secondary"]:hover {
-    background: #FAF8FC !important;
-    background-color: #FAF8FC !important;
-    color: var(--caemt-color) !important;
-    border-color: var(--caemt-color) !important;
-}
-
-[data-testid="stButton"] button:focus,
-[data-testid="stButton"] button:focus-visible,
-[data-testid="stButton"] button:active {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    border-color: var(--caemt-color) !important;
-    box-shadow: 0 0 0 1px var(--caemt-color) !important;
-}
-
-[data-testid="stButton"] button:disabled {
-    background: #F2F4F7 !important;
-    background-color: #F2F4F7 !important;
-    color: #98A2B3 !important;
-    border-color: #E4E7EC !important;
-    opacity: 1 !important;
-}
-
-/* ----------------------------------------------------------
-   CHECKBOX
-   ---------------------------------------------------------- */
-[data-testid="stCheckbox"],
-[data-testid="stCheckbox"] label,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"] {
-    color-scheme: light !important;
-}
-
-[data-testid="stCheckbox"] label,
-[data-testid="stCheckbox"] p {
-    color: var(--text-color) !important;
-}
-
-/* Caixa desmarcada - contempla diferentes versões do BaseWeb */
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > span:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > span:first-child > div,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:not(:checked)) > div:first-child > div,
-[data-testid="stCheckbox"] span[data-baseweb="checkbox"]:has(input:not(:checked)) > div {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    border-color: #98A2B3 !important;
-    box-shadow: none !important;
-}
-
-/* Estado marcado */
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > span:first-child > div,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child,
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) > div:first-child > div,
-[data-testid="stCheckbox"] span[data-baseweb="checkbox"]:has(input:checked) > div {
-    background: var(--caemt-color) !important;
-    background-color: var(--caemt-color) !important;
-    border-color: var(--caemt-color) !important;
-}
-
-[data-testid="stCheckbox"] label[data-baseweb="checkbox"]:has(input:checked) svg,
-[data-testid="stCheckbox"] span[data-baseweb="checkbox"]:has(input:checked) svg {
-    color: #FFFFFF !important;
-    fill: #FFFFFF !important;
-}
-
-/* Fallback caso o checkbox seja renderizado como controle nativo */
-[data-testid="stCheckbox"] input[type="checkbox"] {
-    accent-color: var(--caemt-color) !important;
-}
-
-/* ----------------------------------------------------------
-   EXPANDERS
-   ---------------------------------------------------------- */
-[data-testid="stExpander"],
-[data-testid="stExpander"] > details,
-[data-testid="stExpanderDetails"],
-[data-testid="stExpanderDetails"] > div,
-[data-testid="stExpanderDetails"] [data-testid="stVerticalBlock"] {
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
-    color-scheme: light !important;
-}
-
-[data-testid="stExpander"] {
-    border: 1px solid var(--border-color) !important;
-    border-radius: 9px !important;
-    overflow: hidden;
-}
-
-[data-testid="stExpander"] summary {
-    background: var(--secondary-background) !important;
-    background-color: var(--secondary-background) !important;
-    color: var(--text-color) !important;
-}
-
-[data-testid="stExpander"] summary:hover {
-    background: #EEF2F7 !important;
-    background-color: #EEF2F7 !important;
-}
-
-[data-testid="stExpander"] summary p,
-[data-testid="stExpander"] summary span,
-[data-testid="stExpander"] summary svg {
-    color: var(--text-color) !important;
-}
-
-/* ----------------------------------------------------------
-   ALERTAS / MENSAGENS NATIVAS
-   ---------------------------------------------------------- */
-[data-testid="stAlert"],
-[data-testid="stAlert"] > div {
-    color-scheme: light !important;
-}
-
-[data-testid="stAlert"] p,
-[data-testid="stAlert"] span {
-    color: var(--text-color) !important;
-}
-
-/* ----------------------------------------------------------
-   TOOLTIP
-   ---------------------------------------------------------- */
-[data-baseweb="tooltip"],
-[data-baseweb="tooltip"] > div {
-    background-color: #FFFFFF !important;
-    color: var(--text-color) !important;
-    color-scheme: light !important;
-}
-
 </style>
 """,
     unsafe_allow_html=True,
@@ -643,7 +298,7 @@ button[kind="secondary"]:hover {
 
 
 # ============================================================
-# MATRIZES CURRICULARES
+# GRADE 2023 - ENGENHARIA DE MATERIAIS / CAMPUS ITAJUBÁ
 # ============================================================
 #
 # "oferta":
@@ -759,191 +414,87 @@ MATRIZ_2023 = {
 }
 
 
-# Grade 2016 transcrita do código original enviado pelo usuário.
-MATRIZ_2016 = {
-    "1º Período": {
-        "EMT101": {"nome": "Introdução à EMT", "req": [], "oferta": "impar"},
-        "CCO016": {"nome": "Fundamentos de Programação", "req": [], "oferta": "regular"},
-        "SOC002": {"nome": "Ciências Humanas e Sociais", "req": [], "oferta": "regular"},
-        "MAT001": {"nome": "Cálculo I", "req": [], "oferta": "regular"},
-        "MAT011": {"nome": "Geometria Analítica e Álgebra Linear", "req": [], "oferta": "regular"},
-        "FIS104": {"nome": "Mecânica Geral", "req": [], "oferta": "impar"},
-        "FIS114": {"nome": "Laboratório de Mecânica Geral", "req": [], "oferta": "impar"},
-    },
-    "2º Período": {
-        "EMT037T": {"nome": "Ciência dos Materiais I - Teórica", "req": ["EMT101"], "oferta": "par"},
-        "EMT037P": {"nome": "Ciência dos Materiais I - Experimental", "req": ["EMT101"], "oferta": "par"},
-        "FIS203": {"nome": "Física Geral I", "req": ["MAT001"], "oferta": "regular"},
-        "FIS213": {"nome": "Física Experimental I", "req": ["MAT001"], "oferta": "regular"},
-        "MAT002": {"nome": "Cálculo II", "req": ["MAT001"], "oferta": "regular"},
-        "EMT102": {"nome": "Química Geral", "req": [], "oferta": "par"},
-        "BAC002": {"nome": "Língua Comum", "req": [], "oferta": "regular"},
-    },
-    "3º Período": {
-        "EMT038": {"nome": "Ciência dos Materiais II", "req": ["EMT037T"], "oferta": "impar"},
-        "FIS303": {"nome": "Estática", "req": ["FIS104"], "oferta": "regular"},
-        "EME303": {"nome": "Resistência dos Materiais - Teórica", "req": ["FIS104"], "oferta": "regular"},
-        "FIS403": {"nome": "Física Geral III", "req": ["FIS203", "MAT002"], "oferta": "regular"},
-        "MAT003": {"nome": "Cálculo III", "req": ["MAT002"], "oferta": "regular"},
-        "EMT103": {"nome": "Físico-Química", "req": ["EMT102", "MAT001"], "oferta": "impar"},
-        "QUI022": {"nome": "Química Orgânica", "req": ["EMT102"], "oferta": "impar"},
-    },
-    "4º Período": {
-        "EMT039": {"nome": "Termodinâmica", "req": ["EMT038", "EMT103"], "oferta": "par"},
-        "EME405T": {"nome": "Resistência dos Materiais - Experimental", "req": ["EME303"], "oferta": "par"},
-        "EME405P": {"nome": "Mecânica dos Sólidos - Teórica", "req": ["EME303"], "oferta": "par"},
-        "MAT013": {"nome": "Probabilidade e Estatística", "req": ["MAT002"], "oferta": "regular"},
-        "MAT021": {"nome": "Equações Diferenciais", "req": ["MAT003"], "oferta": "par"},
-        "QUI105": {"nome": "Química Analítica", "req": ["EMT102"], "oferta": "par"},
-        "QUI115": {"nome": "Química Analítica Experimental", "req": ["EMT102"], "oferta": "par"},
-    },
-    "5º Período": {
-        "EMT002T": {"nome": "Materiais Cerâmicos - Teórica", "req": ["EMT039"], "oferta": "impar"},
-        "EMT002P": {"nome": "Materiais Cerâmicos - Experimental", "req": ["EMT039"], "oferta": "impar"},
-        "EME313T": {"nome": "Fenômenos de Transporte - Teórica", "req": ["MAT003", "MAT021"], "oferta": "impar"},
-        "EME313P": {"nome": "Fenômenos de Transporte - Experimental", "req": ["MAT003"], "oferta": "impar"},
-        "EME505T": {"nome": "Resistência dos Materiais II - Teórica", "req": ["EME405T"], "oferta": "impar"},
-        "EME505P": {"nome": "Resistência dos Materiais II - Experimental", "req": ["EME405T"], "oferta": "impar"},
-        "EMT072": {"nome": "Produção de Ligas", "req": ["EMT038"], "oferta": "impar"},
-    },
-    "6º Período": {
-        "EMT049T": {"nome": "Conformação de Metais - Teórica", "req": ["EMT002T"], "oferta": "par"},
-        "EMT049P": {"nome": "Conformação de Metais - Experimental", "req": ["EMT002P"], "oferta": "par"},
-        "EMT412T": {"nome": "Estrutura e Propriedades Polímeros - Teórica", "req": ["QUI022"], "oferta": "par"},
-        "EMT412P": {"nome": "Estrutura e Propriedades Polímeros - Experimental", "req": ["QUI022"], "oferta": "par"},
-        "EME047T": {"nome": "Estrutura e Propriedades Polímeros - Teórica", "req": ["EMT039"], "oferta": "par"},
-        "EMT147P": {"nome": "Estrutura e Propriedades Polímeros - Experimental", "req": ["EMT039"], "oferta": "par"},
-        "EMT071": {"nome": "Processos de Fabricação I - Experimental", "req": ["EMT072"], "oferta": "par"},
-        "EME039T": {"nome": "Fenômenos de Transporte II - Teórica", "req": ["EME313T"], "oferta": "par"},
-        "EME039P": {"nome": "Fenômenos de Transporte II - Experimental", "req": ["EME313T"], "oferta": "par"},
-    },
-    "7º Período": {
-        "EMT024T": {"nome": "Processamento de Materiais Cerâmicos - Teórica", "req": ["EMT049T"], "oferta": "impar"},
-        "EMT024P": {"nome": "Processamento de Materiais Cerâmicos - Experimental", "req": ["EMT049P"], "oferta": "impar"},
-        "EMT025T": {"nome": "Técnicas de Caracterização de Materiais", "req": ["EMT072"], "oferta": "impar"},
-        "EMT125P": {"nome": "Técnicas de Caracterização - Experimental", "req": ["EMT072"], "oferta": "impar"},
-        "EMT030": {"nome": "Fundamentos de Oxidação e Corrosão", "req": ["EMT039"], "oferta": "impar"},
-        "EMT066T": {"nome": "Tratamento Térmico - Teórica", "req": ["EMT039"], "oferta": "impar"},
-        "EMT066P": {"nome": "Tratamento Térmico - Experimental", "req": ["EMT039"], "oferta": "impar"},
-        "EAM002": {"nome": "Ciência de Materiais", "req": ["EMT038"], "oferta": "regular"},
-        "EMT067": {"nome": "Seleção de Materiais", "req": ["EMT038"], "oferta": "impar"},
-    },
-    "8º Período": {
-        "EMT027T": {"nome": "Vidros e Vitrocerâmicos", "req": ["EMT002T"], "oferta": "par"},
-        "EMT046": {"nome": "Processamento de Materiais Cerâmicos II", "req": ["EMT024T"], "oferta": "par"},
-        "EMT065T": {"nome": "Processos de Fabricação II", "req": ["EMT071"], "oferta": "par"},
-        "EMT022T": {"nome": "Tratamento Superficial de Metais", "req": ["EMT030"], "oferta": "par"},
-        "EMT042T": {"nome": "Processamento de Polímeros - Teórica", "req": ["EMT047T", "EMT412T"], "oferta": "par"},
-        "EMT142P": {"nome": "Processamento de Polímeros - Experimental", "req": ["EMT047T"], "oferta": "par"},
-        "EPR220": {"nome": "Higiene e Segurança do Trabalho", "req": [], "oferta": "regular"},
-        "EPR002": {"nome": "Organização Industrial e Administração", "req": [], "oferta": "regular"},
-    },
-    "9º Período": {
-        "IEPG01": {"nome": "Administração e Economia", "req": [], "oferta": "impar"},
-        "TCC001": {"nome": "Trabalho de Conclusão de Curso I", "req": [], "oferta": "regular"},
-    },
-    "10º Período": {
-        "EST001": {"nome": "Estágio Supervisionado", "req": [], "oferta": "regular"},
-        "TCC002": {"nome": "Trabalho de Conclusão de Curso II", "req": ["TCC001"], "oferta": "regular"},
-    },
-}
-
-MATRIZES = {
-    "2023": MATRIZ_2023,
-    "2016": MATRIZ_2016,
-}
-
-
 # ============================================================
 # FUNÇÕES AUXILIARES
 # ============================================================
 
 
-def todas_as_disciplinas(matriz):
-    """Retorna um dicionário código -> dados para a matriz selecionada."""
+def todas_as_disciplinas():
+    """Retorna um dicionário código -> dados para toda a matriz."""
     resultado = {}
-    for periodo, materias in matriz.items():
+
+    for periodo, materias in MATRIZ_2023.items():
         for codigo, dados in materias.items():
-            resultado[codigo] = {**dados, "periodo": periodo}
+            resultado[codigo] = {
+                **dados,
+                "periodo": periodo,
+            }
+
     return resultado
+
+
+DISCIPLINAS = todas_as_disciplinas()
 
 
 def proximo_semestre_referencia(hoje=None):
     """Retorna (oferta, texto) para o próximo semestre civil."""
     hoje = hoje or date.today()
+
     if hoje.month <= 6:
         return "par", f"2º semestre de {hoje.year}"
+
     return "impar", f"1º semestre de {hoje.year + 1}"
 
 
-def chave_checkbox(grade, codigo):
-    return f"concluida_{grade}_{codigo}"
+def chave_checkbox(codigo):
+    return f"concluida_{codigo}"
 
 
-def inicializar_estado(grade, disciplinas):
-    for codigo in disciplinas:
-        chave = chave_checkbox(grade, codigo)
+def inicializar_estado():
+    for codigo in DISCIPLINAS:
+        chave = chave_checkbox(codigo)
         if chave not in st.session_state:
             st.session_state[chave] = False
 
 
-def disciplinas_concluidas(grade, disciplinas):
+def disciplinas_concluidas():
     return {
         codigo
-        for codigo in disciplinas
-        if st.session_state.get(chave_checkbox(grade, codigo), False)
+        for codigo in DISCIPLINAS
+        if st.session_state.get(chave_checkbox(codigo), False)
     }
 
 
-def marcar_periodo(grade, matriz, periodo, valor):
-    for codigo in matriz[periodo]:
-        st.session_state[chave_checkbox(grade, codigo)] = valor
+def marcar_periodo(periodo, valor):
+    for codigo in MATRIZ_2023[periodo]:
+        st.session_state[chave_checkbox(codigo)] = valor
 
 
-def limpar_todas(grade, disciplinas):
-    for codigo in disciplinas:
-        st.session_state[chave_checkbox(grade, codigo)] = False
+def limpar_todas():
+    for codigo in DISCIPLINAS:
+        st.session_state[chave_checkbox(codigo)] = False
 
 
 def escapar(texto):
     return html.escape(str(texto))
 
 
-def requisito_esta_concluido(grade, requisito, concluidas):
-    """
-    Mantém os dados da grade 2016 exatamente como no código original.
-
-    No código original, a disciplina EME047T aparece no 6º período, mas
-    EMT042T/EMT142P usam EMT047T como pré-requisito. Para que essa
-    inconsistência de código não deixe duas disciplinas permanentemente
-    bloqueadas, EME047T é aceito como equivalente a EMT047T apenas na
-    verificação de pré-requisitos da grade 2016.
-    """
-    if requisito in concluidas:
-        return True
-    if grade == "2016" and requisito == "EMT047T" and "EME047T" in concluidas:
-        return True
-    return False
-
-
-def nome_requisito(grade, requisito, disciplinas):
-    if requisito in disciplinas:
-        return requisito
-    if grade == "2016" and requisito == "EMT047T" and "EME047T" in disciplinas:
-        return "EME047T"
-    return requisito
-
-
 def renderizar_disponivel(codigo, dados):
+    codigo_html = escapar(codigo)
+    nome_html = escapar(dados["nome"])
+
     st.markdown(
         '<div class="sugestao-item">'
-        f'<strong>{escapar(codigo)}</strong> - {escapar(dados["nome"])}'
+        f'<strong>{codigo_html}</strong> - {nome_html}'
         '</div>',
         unsafe_allow_html=True,
     )
 
 
 def renderizar_nao_ofertada(codigo, dados, semestre_destino):
+    codigo_html = escapar(codigo)
+    nome_html = escapar(dados["nome"])
+
     if dados["oferta"] == "impar":
         oferta_texto = "Componente previsto para o 1º semestre do ano."
     else:
@@ -951,7 +502,7 @@ def renderizar_nao_ofertada(codigo, dados, semestre_destino):
 
     st.markdown(
         '<div class="bloqueada-oferta">'
-        f'<strong>{escapar(codigo)}</strong> - {escapar(dados["nome"])}'
+        f'<strong>{codigo_html}</strong> - {nome_html}'
         f'<span class="aviso-oferta">{escapar(oferta_texto)} Destino atual: {escapar(semestre_destino)}.</span>'
         '</div>',
         unsafe_allow_html=True,
@@ -959,14 +510,25 @@ def renderizar_nao_ofertada(codigo, dados, semestre_destino):
 
 
 def renderizar_bloqueada(codigo, dados, faltantes):
+    codigo_html = escapar(codigo)
+    nome_html = escapar(dados["nome"])
     faltantes_html = ", ".join(escapar(item) for item in faltantes)
+
     st.markdown(
         '<div class="bloqueada-requisito">'
-        f'<strong>{escapar(codigo)}</strong> - {escapar(dados["nome"])}'
+        f'<strong>{codigo_html}</strong> - {nome_html}'
         f'<span class="aviso-requisito">Falta concluir: {faltantes_html}</span>'
         '</div>',
         unsafe_allow_html=True,
     )
+
+
+# ============================================================
+# INICIALIZAÇÃO
+# ============================================================
+
+inicializar_estado()
+semestre_oferta, semestre_texto = proximo_semestre_referencia()
 
 
 # ============================================================
@@ -985,59 +547,31 @@ st.markdown("<h1>Fluxograma Inteligente</h1>", unsafe_allow_html=True)
 
 st.markdown(
     '<p class="subtitle">'
-    'Escolha a matriz curricular e marque apenas as disciplinas que você já concluiu.'
+    'Grade 2023 - Engenharia de Materiais, Campus Itajubá. '
+    'Marque apenas as disciplinas que você já concluiu.'
     '</p>',
     unsafe_allow_html=True,
 )
 
-
-# ============================================================
-# SELEÇÃO DA MATRIZ
-# ============================================================
-
-col_grade, _ = st.columns([1.2, 2.8])
-
-with col_grade:
-    grade_versao = st.selectbox(
-        "Grade curricular:",
-        options=["2023", "2016"],
-        index=0,
-    )
-
-MATRIZ_ATUAL = MATRIZES[grade_versao]
-DISCIPLINAS = todas_as_disciplinas(MATRIZ_ATUAL)
-inicializar_estado(grade_versao, DISCIPLINAS)
-
-semestre_oferta, semestre_texto = proximo_semestre_referencia()
-
 st.markdown(
-    f'<div class="semester-badge">Grade {escapar(grade_versao)} · Planejamento automático: {escapar(semestre_texto)}</div>',
+    f'<div class="semester-badge">Planejamento automático: {escapar(semestre_texto)}</div>',
     unsafe_allow_html=True,
 )
-
-if grade_versao == "2016":
-    st.caption(
-        "Nota técnica: a grade 2016 foi incorporada a partir do código original. "
-        "Nesse código, EME047T aparece na lista de disciplinas enquanto EMT047T "
-        "é citado como pré-requisito de duas matérias; o simulador trata esses "
-        "códigos como equivalentes apenas nessa verificação."
-    )
 
 
 # ============================================================
 # CONTROLES RÁPIDOS
 # ============================================================
 
-controle1, _ = st.columns([1, 5])
+controle1, controle2, espaco = st.columns([1, 1, 4])
 
 with controle1:
-    if st.button(
-        "Limpar seleção",
-        key=f"limpar_{grade_versao}",
-        use_container_width=True,
-    ):
-        limpar_todas(grade_versao, DISCIPLINAS)
+    if st.button("Limpar seleção", use_container_width=True):
+        limpar_todas()
         st.rerun()
+
+with controle2:
+    st.caption("A seleção fica apenas nesta sessão.")
 
 st.markdown("---")
 
@@ -1057,43 +591,40 @@ with col_esquerda:
     st.markdown("### 1. Disciplinas concluídas")
     st.caption("Abra os períodos e marque somente o que já foi concluído.")
 
-    for periodo, materias in MATRIZ_ATUAL.items():
+    for periodo, materias in MATRIZ_2023.items():
         concluidas_periodo = sum(
             1
             for codigo in materias
-            if st.session_state.get(chave_checkbox(grade_versao, codigo), False)
+            if st.session_state.get(chave_checkbox(codigo), False)
         )
 
         titulo = f"{periodo} - {concluidas_periodo}/{len(materias)} concluídas"
 
-        with st.expander(
-            titulo,
-            expanded=periodo in {"1º Período", "2º Período"},
-        ):
+        with st.expander(titulo, expanded=periodo in {"1º Período", "2º Período"}):
             botao1, botao2 = st.columns(2)
 
             with botao1:
                 if st.button(
                     "Marcar período inteiro",
-                    key=f"marcar_{grade_versao}_{periodo}",
+                    key=f"marcar_{periodo}",
                     use_container_width=True,
                 ):
-                    marcar_periodo(grade_versao, MATRIZ_ATUAL, periodo, True)
+                    marcar_periodo(periodo, True)
                     st.rerun()
 
             with botao2:
                 if st.button(
                     "Desmarcar período",
-                    key=f"desmarcar_{grade_versao}_{periodo}",
+                    key=f"desmarcar_{periodo}",
                     use_container_width=True,
                 ):
-                    marcar_periodo(grade_versao, MATRIZ_ATUAL, periodo, False)
+                    marcar_periodo(periodo, False)
                     st.rerun()
 
             for codigo, dados in materias.items():
                 st.checkbox(
                     f"**{codigo}** - {dados['nome']}",
-                    key=chave_checkbox(grade_versao, codigo),
+                    key=chave_checkbox(codigo),
                 )
 
 
@@ -1101,7 +632,7 @@ with col_esquerda:
 # CÁLCULOS DO ESTADO ATUAL
 # ============================================================
 
-concluidas = disciplinas_concluidas(grade_versao, DISCIPLINAS)
+concluidas = disciplinas_concluidas()
 total_materias = len(DISCIPLINAS)
 total_concluidas = len(concluidas)
 progresso = round((total_concluidas / total_materias) * 100) if total_materias else 0
@@ -1114,11 +645,7 @@ for codigo, dados in DISCIPLINAS.items():
     if codigo in concluidas:
         continue
 
-    faltantes = [
-        nome_requisito(grade_versao, req, DISCIPLINAS)
-        for req in dados["req"]
-        if not requisito_esta_concluido(grade_versao, req, concluidas)
-    ]
+    faltantes = [req for req in dados["req"] if req not in concluidas]
 
     if faltantes:
         bloqueadas.append((codigo, dados, faltantes))
@@ -1161,13 +688,14 @@ st.markdown(
 
 with col_direita:
     st.markdown("### 2. Situação para o próximo semestre")
-    st.caption(f"Grade {grade_versao} · Análise para {semestre_texto}.")
+    st.caption(f"Análise para {semestre_texto}.")
 
     if liberadas:
         st.markdown(
             '<div class="divisoria">DISCIPLINAS LIBERADAS</div>',
             unsafe_allow_html=True,
         )
+
         for codigo, dados in liberadas:
             renderizar_disponivel(codigo, dados)
     else:
@@ -1178,6 +706,7 @@ with col_direita:
             '<div class="divisoria">LIBERADAS, MAS FORA DO SEMESTRE DE OFERTA</div>',
             unsafe_allow_html=True,
         )
+
         for codigo, dados in liberadas_nao_ofertadas:
             renderizar_nao_ofertada(codigo, dados, semestre_texto)
 
